@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project | Benjamin Khoko</title>
+<meta name="description" content="Customer Account Takeover Detection: a supervised machine learning system that identifies potentially compromised customer accounts.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{navy:{DEFAULT:"#0B1F3A",soft:"#1B3358"},lime:{DEFAULT:"#1FE07A",dark:"#087F43",soft:"#E9FBF1"}}}}}</script>
+<style>
+  body { font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; padding-top: 4.5rem; }
+  h1, h2, h3, .font-display { font-family: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif; letter-spacing: -0.03em; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #1FE07A; outline-offset: 3px; }
+  .card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgba(11,31,58,.28); border-color: #1FE07A; }
+  .btn { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .navlink { position: relative; }
+  .navlink::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:3px; background:#1FE07A; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+  .navlink:hover::after, .navlink[aria-current="page"]::after { transform:scaleX(1); }
+  .js .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; transition-delay:var(--d,0s); }
+  .js .reveal.in { opacity:1; transform:none; }
+  .bar-fill { width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
+  .feed-row { opacity:0; animation: rowin .5s ease-out forwards; }
+  .flag-row { background:#1FE07A; color:#0B1F3A; animation: rowin .5s ease-out 2.2s forwards, flag .7s ease-out 2.9s both; }
+  @keyframes rowin { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @keyframes flag { from { background:#1B3358; color:#e2e8f0; } }
+  @keyframes floaty { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+  .floaty { animation: floaty 6s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    .feed-row, .flag-row { opacity:1 !important; } .js .reveal { opacity:1; transform:none; }
+  }
+  .placeholder-tag { background:#fef3c7; color:#92400e; padding:0 .3rem; font-family:ui-monospace,monospace; font-size:.85em; }
+</style>
+</head>
+<body class="bg-white text-navy antialiased">
+<header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-navy/10">
+  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[4.5rem] flex items-center justify-between" aria-label="Main">
+    <a href="index.html" class="font-display text-lg font-bold tracking-tight text-navy flex items-center gap-2"><span class="h-2.5 w-2.5 bg-lime"></span>Benjamin Khoko</a>
+    <div class="hidden md:flex items-center gap-9 text-sm font-medium">
+      <a href="index.html" class="navlink text-navy/70 hover:text-navy transition-colors">About</a><a href="project.html" class="navlink text-navy transition-colors" aria-current="page">Project</a><a href="results.html" class="navlink text-navy/70 hover:text-navy transition-colors">Results</a>
+      <a href="YOUR_GITHUB_REPOSITORY_URL" target="_blank" rel="noopener" class="btn bg-navy px-5 py-2.5 text-white font-semibold hover:bg-lime hover:text-navy">GitHub &nearr;</a>
+    </div>
+    <button id="menu-btn" class="md:hidden p-2 text-navy" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-navy/10 bg-white px-5 pb-5 text-base font-medium">
+    <a href="index.html" class="block py-3 text-navy/70">About</a><a href="project.html" class="block py-3 font-semibold text-navy">Project</a><a href="results.html" class="block py-3 text-navy/70">Results</a>
+    <a href="YOUR_GITHUB_REPOSITORY_URL" target="_blank" rel="noopener" class="mt-2 block bg-navy px-5 py-3 text-center text-white font-semibold">GitHub &nearr;</a>
+  </div>
+</header>
+<main>
+
+<section class="relative overflow-hidden border-b border-navy/10">
+  <div class="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-lime/20 blur-3xl" aria-hidden="true"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="reveal text-sm font-semibold uppercase tracking-[0.2em] text-lime-dark">Case study</p>
+      <h1 class="reveal mt-5 text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-navy" style="--d:.08s">Customer Account Takeover Detection</h1>
+      <p class="reveal mt-6 max-w-xl text-lg sm:text-xl text-navy/70 leading-relaxed" style="--d:.16s">A machine learning system designed to identify potentially compromised customer accounts.</p>
+      <div class="reveal mt-9 flex flex-wrap gap-4" style="--d:.24s"><a href="YOUR_GITHUB_REPOSITORY_URL" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center bg-lime px-7 py-3.5 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">View Source Code</a><a href="results.html" class="btn inline-flex items-center justify-center border-2 border-navy px-7 py-3.5 font-semibold text-navy hover:bg-navy hover:text-white">View Results &rarr;</a></div>
+    </div>
+    <div class="reveal bg-navy p-6 sm:p-8 text-white shadow-2xl shadow-navy/25" style="--d:.2s" role="img" aria-label="Illustrative example of account activity being classified">
+      <div class="flex items-center justify-between text-xs text-white/50"><span>Account activity</span><span>Illustrative sample, not real data</span></div>
+      <ul class="mt-5 space-y-3 text-sm sm:text-base">
+        <li class="feed-row bg-white/10 flex items-center justify-between gap-4 px-4 py-3" style="animation-delay:.2s"><span>Login, usual device</span><span class="shrink-0 font-semibold text-white/50">Normal</span></li>
+        <li class="feed-row bg-white/10 flex items-center justify-between gap-4 px-4 py-3" style="animation-delay:.6s"><span>Login, usual device</span><span class="shrink-0 font-semibold text-white/50">Normal</span></li>
+        <li class="feed-row bg-white/10 flex items-center justify-between gap-4 px-4 py-3" style="animation-delay:.9s"><span>Login, new browser</span><span class="shrink-0 font-semibold text-amber-300">Review</span></li>
+        <li class="flag-row flex items-center justify-between gap-4 px-4 py-3"><span>Password reset, new country, new device</span><span class="shrink-0 font-bold">Potentially compromised</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 sm:py-20"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="reveal grid md:grid-cols-12 gap-6 py-12 border-t border-navy/10" style="--d:.05s">
+    <div class="md:col-span-2"><span class="font-display text-5xl font-extrabold text-lime-dark">01</span></div>
+    <div class="md:col-span-10"><h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-navy/55">The problem</h3><p class="mt-4 text-2xl sm:text-3xl font-display font-bold leading-snug max-w-3xl">Customer accounts can be compromised through suspicious authentication and account activity.</p><p class="mt-4 text-navy/70 text-lg max-w-3xl leading-relaxed">This project uses machine learning to classify account activity as normal or potentially compromised.</p></div></div>
+  <div class="reveal grid md:grid-cols-12 gap-6 py-12 border-t border-navy/10" style="--d:.05s">
+    <div class="md:col-span-2"><span class="font-display text-5xl font-extrabold text-lime-dark">02</span></div>
+    <div class="md:col-span-10"><h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-navy/55">The approach</h3><p class="mt-4 text-2xl sm:text-3xl font-display font-bold leading-snug max-w-3xl">Supervised classification, compared across three models.</p><p class="mt-4 text-navy/70 text-lg max-w-3xl leading-relaxed">The objectives of the project:</p><ol class="mt-5 grid sm:grid-cols-2 gap-x-8 gap-y-3 text-navy/80"><li class="flex gap-3"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center bg-lime text-navy text-xs font-bold">1</span><span>Analyze customer account activity data.</span></li><li class="flex gap-3"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center bg-lime text-navy text-xs font-bold">2</span><span>Identify patterns associated with account takeover.</span></li><li class="flex gap-3"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center bg-lime text-navy text-xs font-bold">3</span><span>Train supervised classification models.</span></li><li class="flex gap-3"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center bg-lime text-navy text-xs font-bold">4</span><span>Compare the performance of different models.</span></li><li class="flex gap-3"><span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center bg-lime text-navy text-xs font-bold">5</span><span>Develop a Flask-based prediction system.</span></li></ol></div></div>
+  <div class="reveal grid md:grid-cols-12 gap-6 py-12 border-t border-navy/10" style="--d:.05s">
+    <div class="md:col-span-2"><span class="font-display text-5xl font-extrabold text-lime-dark">03</span></div>
+    <div class="md:col-span-10"><h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-navy/55">The technology</h3><p class="mt-4 text-2xl sm:text-3xl font-display font-bold leading-snug max-w-3xl">Built with Python and Flask.</p><div class="mt-5 flex flex-wrap gap-3"><span class=" border border-navy/15 px-4 py-2 text-sm font-medium">Python</span><span class=" border border-navy/15 px-4 py-2 text-sm font-medium">Flask</span><span class=" border border-navy/15 px-4 py-2 text-sm font-medium">JavaScript</span><span class=" border border-navy/15 px-4 py-2 text-sm font-medium">HTML</span><span class=" border border-navy/15 px-4 py-2 text-sm font-medium">CSS</span><span class=" border border-navy/15 px-4 py-2 text-sm font-medium">Machine Learning</span></div><div class="mt-8 grid md:grid-cols-3 gap-5"><div class="card border border-navy/10 bg-white p-7"><h4 class="font-display text-xl font-bold">Logistic Regression</h4><p class="mt-3 text-navy/70 leading-relaxed">A linear model that estimates the probability that an account belongs to the compromised class. Simple, fast and easy to interpret, so it works well as a baseline.</p></div><div class="card border border-navy/10 bg-white p-7"><h4 class="font-display text-xl font-bold">Decision Tree</h4><p class="mt-3 text-navy/70 leading-relaxed">Splits the data with a series of if-then rules on account features. The tree is easy to read and shows how a decision was reached, but a single tree can overfit.</p></div><div class="card border border-navy/10 bg-white p-7"><h4 class="font-display text-xl font-bold">Random Forest</h4><p class="mt-3 text-navy/70 leading-relaxed">Combines many decision trees trained on different samples and averages their votes. Usually more accurate and stable than a single tree, and it can rank feature importance.</p></div></div></div></div>
+  <div class="reveal grid md:grid-cols-12 gap-6 py-12 border-t border-navy/10" style="--d:.05s">
+    <div class="md:col-span-2"><span class="font-display text-5xl font-extrabold text-lime-dark">04</span></div>
+    <div class="md:col-span-10"><h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-navy/55">The process</h3><p class="mt-4 text-2xl sm:text-3xl font-display font-bold leading-snug max-w-3xl">From raw data to a prediction, in eight steps.</p><ol class="mt-6 grid sm:grid-cols-2 gap-x-10 gap-y-3"><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">01</span><span class="font-medium">Dataset</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">02</span><span class="font-medium">Data Cleaning</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">03</span><span class="font-medium">Data Preprocessing</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">04</span><span class="font-medium">Feature Selection</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">05</span><span class="font-medium">Train/Test Split</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">06</span><span class="font-medium">Model Training</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">07</span><span class="font-medium">Model Evaluation</span></li><li class="flex items-center gap-3 border-b border-navy/10 pb-3"><span class="font-display text-sm font-bold text-lime-dark w-6">08</span><span class="font-medium">Prediction</span></li></ol></div></div>
+</div></section>
+
+<section class="py-20 sm:py-28 bg-lime-soft"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Pipeline</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">How a prediction is made</h2></div>
+  <ol class="flex flex-col md:flex-row md:items-stretch gap-3 md:gap-0"><li class="reveal flex-1 flex flex-col md:flex-row items-center" style="--d:0.0s"><div class="card w-full bg-white text-navy border border-navy/10 px-5 py-6 text-center"><p class="text-xs font-semibold uppercase tracking-widest opacity-60">Step 1</p><p class="mt-1 font-display text-xl font-bold">Dataset</p></div><span class="text-lime-dark text-2xl md:px-2 rotate-90 md:rotate-0 leading-none py-1" aria-hidden="true">&rarr;</span></li><li class="reveal flex-1 flex flex-col md:flex-row items-center" style="--d:0.1s"><div class="card w-full bg-white text-navy border border-navy/10 px-5 py-6 text-center"><p class="text-xs font-semibold uppercase tracking-widest opacity-60">Step 2</p><p class="mt-1 font-display text-xl font-bold">Preprocessing</p></div><span class="text-lime-dark text-2xl md:px-2 rotate-90 md:rotate-0 leading-none py-1" aria-hidden="true">&rarr;</span></li><li class="reveal flex-1 flex flex-col md:flex-row items-center" style="--d:0.2s"><div class="card w-full bg-white text-navy border border-navy/10 px-5 py-6 text-center"><p class="text-xs font-semibold uppercase tracking-widest opacity-60">Step 3</p><p class="mt-1 font-display text-xl font-bold">Machine Learning</p></div><span class="text-lime-dark text-2xl md:px-2 rotate-90 md:rotate-0 leading-none py-1" aria-hidden="true">&rarr;</span></li><li class="reveal flex-1 flex flex-col md:flex-row items-center" style="--d:0.3s"><div class="card w-full bg-white text-navy border border-navy/10 px-5 py-6 text-center"><p class="text-xs font-semibold uppercase tracking-widest opacity-60">Step 4</p><p class="mt-1 font-display text-xl font-bold">Classification</p></div><span class="text-lime-dark text-2xl md:px-2 rotate-90 md:rotate-0 leading-none py-1" aria-hidden="true">&rarr;</span></li><li class="reveal flex-1 flex flex-col md:flex-row items-center" style="--d:0.4s"><div class="card w-full bg-lime text-navy px-5 py-6 text-center"><p class="text-xs font-semibold uppercase tracking-widest opacity-60">Step 5</p><p class="mt-1 font-display text-xl font-bold">Prediction</p></div></li></ol>
+</div></section>
+
+<section class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Data</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Dataset</h2><p class="mt-3 text-navy/70 max-w-2xl text-lg">Fill in these details once your dataset is final.</p></div>
+  <div class="reveal"><dl class="max-w-2xl mt-6"><div class="flex flex-col sm:flex-row sm:justify-between gap-1 py-3 border-b border-navy/10"><dt class="text-navy/55">Dataset name</dt><dd><span class="placeholder-tag">[Dataset name]</span></dd></div><div class="flex flex-col sm:flex-row sm:justify-between gap-1 py-3 border-b border-navy/10"><dt class="text-navy/55">Dataset source</dt><dd><span class="placeholder-tag">[Dataset source]</span></dd></div><div class="flex flex-col sm:flex-row sm:justify-between gap-1 py-3 border-b border-navy/10"><dt class="text-navy/55">Number of records</dt><dd><span class="placeholder-tag">[Number of records]</span></dd></div><div class="flex flex-col sm:flex-row sm:justify-between gap-1 py-3 border-b border-navy/10"><dt class="text-navy/55">Number of features</dt><dd><span class="placeholder-tag">[Number of features]</span></dd></div><div class="flex flex-col sm:flex-row sm:justify-between gap-1 py-3 border-b border-navy/10"><dt class="text-navy/55">Target variable</dt><dd><span class="placeholder-tag">[Target variable]</span></dd></div></dl><div class="mt-8"><a href="YOUR_DATASET_URL" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center border-2 border-navy px-7 py-3.5 font-semibold text-navy hover:bg-navy hover:text-white">View Dataset</a></div></div>
+</div></section>
+
+<section class="pb-20 sm:pb-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="reveal grid lg:grid-cols-2 gap-10 items-center border border-navy/10 p-8 sm:p-12">
+    <div><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Application</p><h2 class="mt-2 text-3xl sm:text-4xl font-extrabold">Flask web app</h2>
+      <p class="mt-4 text-navy/70 text-lg leading-relaxed">The trained model is integrated into a Flask web application. Users enter account activity information and receive a prediction of whether the account is normal or potentially compromised.</p>
+      <div class="mt-7"><a href="YOUR_GITHUB_REPOSITORY_URL" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center bg-lime px-7 py-3.5 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">View Source Code</a></div></div>
+    <div class=" bg-navy text-white/85 p-6 font-mono text-sm leading-7"><p class="text-white/40"># Flask app flow</p><p>user input &rarr; preprocess</p><p>model.predict(features)</p><p class="text-lime">&rarr; normal | potentially compromised</p></div>
+  </div>
+</div></section>
+
+</main>
+<footer class="border-t border-navy/10 text-navy/60 text-sm">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between gap-2">
+    <p>&copy; <span id="year">2026</span> Benjamin Khoko. Academic project portfolio.</p>
+    <p>Customer Account Takeover Detection</p>
+  </div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
