@@ -1,6 +1,6 @@
 # Benjamin Khoko: Student Portfolio
 
-Static three-page portfolio for the **Customer Account Takeover Detection** machine learning project.
+Static portfolio featuring the **Secure File Sharing System** and **Customer Account Takeover Detection** projects.
 Built with HTML5, Tailwind CSS (CDN) and vanilla JavaScript. No build step, no backend.
 
 **Design:** white background, dark navy text, one bright-green accent. Large type, rounded cards, fixed top navigation, subtle scroll and hover animations (disabled automatically for visitors who prefer reduced motion).
@@ -9,13 +9,15 @@ Built with HTML5, Tailwind CSS (CDN) and vanilla JavaScript. No build step, no b
 
 ```text
 student-portfolio/
-├── index.html        About
-├── project.html      Project case study
-├── results.html      Results & resources
+├── index.html        About + selected projects
+├── project.html      Account-takeover ML case study
+├── results.html      Account-takeover ML results & resources
+├── secure-file-sharing.html  Secure file-sharing case study & evidence
 ├── images/
-│   ├── profile.jpg            (add your photo)
-│   ├── confusion_matrix.png   (add after training)
-│   └── feature_importance.png (add after training)
+│   ├── profile.jpg
+│   ├── confusion_matrix.png
+│   ├── feature_importance.png
+│   └── secure file sharing/   Project screenshots
 ├── js/script.js      Interactions + your RESULTS numbers
 └── README.md
 ```
@@ -35,7 +37,7 @@ Placeholders are highlighted in yellow on the pages. Search the project for `YOU
 |---|---|
 | `YOUR_EMAIL`, `YOUR_GITHUB_URL`, `YOUR_LINKEDIN_URL`, `YOUR_LOCATION` | `index.html` contact section |
 | `[University Name]`, `[School Name]`, `[Year]` | `index.html` education timeline |
-| `YOUR_GITHUB_REPOSITORY_URL` | all three pages (navbar GitHub button, source code and resource links) |
+| `YOUR_GITHUB_REPOSITORY_URL` | project pages (navbar GitHub button, source code and resource links) |
 | `YOUR_DATASET_URL` | `project.html`, `results.html` |
 | `YOUR_DOCUMENTATION_URL`, `YOUR_REPORT_URL` | `results.html` |
 | `[Dataset name]`, `[Dataset source]`, `[Number of records]`, `[Number of features]`, `[Target variable]` | `project.html` dataset section |
