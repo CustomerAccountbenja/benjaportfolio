@@ -17,7 +17,7 @@ student-portfolio/
 │   ├── profile.jpg
 │   ├── confusion_matrix.png
 │   ├── feature_importance.png
-│   └── secure file sharing/   Project screenshots
+│   └── secure file sharing/   Project screenshots and redacted public copies
 ├── js/script.js      Interactions + your RESULTS numbers
 └── README.md
 ```
@@ -28,6 +28,10 @@ Open `js/script.js` and fill in the `RESULTS` block at the top with your **test-
 (for example `accuracy: 93.8`). The big stat cards, the model-comparison bars and the table on
 `results.html` all update from that one block. Set `bestModel` to the name of your top model.
 Anything left as `null` shows as an em dash.
+
+Screenshots used on the secure file-sharing case study are included under
+`images/secure file sharing/`. Captures containing account details are redacted
+for display, and their unredacted source files are excluded from Git.
 
 ## Replace the placeholders
 
