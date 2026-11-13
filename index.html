@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About | Benjamin Khoko</title>
-<meta name="description" content="Student portfolio of Benjamin Khoko, featuring a secure file-sharing system and a machine-learning project.">
+<meta name="description" content="Student portfolio of Benjamin Khoko, featuring web development, machine learning and natural language processing projects.">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
   <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[4.5rem] flex items-center justify-between" aria-label="Main">
     <a href="index.html" class="font-display text-lg font-bold tracking-tight text-navy flex items-center gap-2"><span class="h-2.5 w-2.5 bg-lime"></span>Benjamin Khoko</a>
     <div class="hidden md:flex items-center gap-9 text-sm font-medium">
-      <a href="index.html" class="navlink text-navy transition-colors" aria-current="page">About</a><a href="project.html" class="navlink text-navy/70 hover:text-navy transition-colors">Account Takeover</a><a href="results.html" class="navlink text-navy/70 hover:text-navy transition-colors">ML Results</a><a href="secure-file-sharing.html" class="navlink text-navy/70 hover:text-navy transition-colors">Secure Sharing</a>
+      <a href="index.html" class="navlink text-navy transition-colors" aria-current="page">About</a><a href="project.html" class="navlink text-navy/70 hover:text-navy transition-colors">Account Takeover</a><a href="results.html" class="navlink text-navy/70 hover:text-navy transition-colors">ML Results</a><a href="secure-file-sharing.html" class="navlink text-navy/70 hover:text-navy transition-colors">Secure Sharing</a><a href="nlp-project.html" class="navlink text-navy/70 hover:text-navy transition-colors">NLP Analyzer</a>
       <a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener" class="btn bg-navy px-5 py-2.5 text-white font-semibold hover:bg-lime hover:text-navy">GitHub &nearr;</a>
     </div>
     <button id="menu-btn" class="md:hidden p-2 text-navy" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -51,7 +51,7 @@
     </button>
   </nav>
   <div id="mobile-menu" class="hidden md:hidden border-t border-navy/10 bg-white px-5 pb-5 text-base font-medium">
-    <a href="index.html" class="block py-3 font-semibold text-navy">About</a><a href="project.html" class="block py-3 text-navy/70">Account Takeover</a><a href="results.html" class="block py-3 text-navy/70">ML Results</a><a href="secure-file-sharing.html" class="block py-3 text-navy/70">Secure Sharing</a>
+    <a href="index.html" class="block py-3 font-semibold text-navy">About</a><a href="project.html" class="block py-3 text-navy/70">Account Takeover</a><a href="results.html" class="block py-3 text-navy/70">ML Results</a><a href="secure-file-sharing.html" class="block py-3 text-navy/70">Secure Sharing</a><a href="nlp-project.html" class="block py-3 text-navy/70">NLP Analyzer</a>
     <a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener" class="mt-2 block bg-navy px-5 py-3 text-center text-white font-semibold">GitHub &nearr;</a>
   </div>
 </header>
@@ -101,7 +101,7 @@
 
 <section id="projects" class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
   <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Selected work</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Projects</h2></div>
-  <div class="grid lg:grid-cols-2 gap-6">
+  <div class="grid md:grid-cols-2 gap-6">
     <article class="card reveal flex flex-col border border-navy/10 bg-white p-8 sm:p-10">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Cybersecurity · Flask</p>
       <h3 class="mt-4 font-display text-3xl sm:text-4xl font-extrabold">Secure File Sharing System</h3>
@@ -116,6 +116,13 @@
       <p class="mt-5 text-sm text-navy/55">Python · Flask · Classification · Model evaluation</p>
       <div class="mt-auto pt-8 flex flex-wrap gap-3"><a href="project.html" class="btn inline-flex items-center justify-center bg-navy px-6 py-3 font-semibold text-white hover:bg-lime hover:text-navy">View case study &rarr;</a><a href="results.html" class="btn inline-flex items-center justify-center border-2 border-navy px-6 py-3 font-semibold text-navy hover:bg-navy hover:text-white">View results</a></div>
     </article>
+    <article class="card reveal flex flex-col border border-navy/10 bg-white p-8 sm:p-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Artificial intelligence · NLP</p>
+      <h3 class="mt-4 font-display text-3xl sm:text-4xl font-extrabold">NLP Smart Analyzer</h3>
+      <p class="mt-4 text-navy/70 text-lg leading-relaxed">A Flask workspace for analysing text and documents with keyword extraction, summarisation, language detection, sentiment analysis and translation.</p>
+      <p class="mt-5 text-sm text-navy/55">Python · Flask · NLTK · spaCy · scikit-learn · Transformers</p>
+      <div class="mt-auto pt-8 flex flex-wrap gap-3"><a href="nlp-project.html" class="btn inline-flex items-center justify-center bg-lime px-6 py-3 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">View case study &rarr;</a><a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center border-2 border-navy px-6 py-3 font-semibold text-navy hover:bg-navy hover:text-white">Source code</a></div>
+    </article>
   </div>
 </div></section>
 
@@ -128,7 +135,7 @@
 <footer class="border-t border-navy/10 text-navy/60 text-sm">
   <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between gap-2">
     <p>&copy; <span id="year">2026</span> Benjamin Khoko. Academic project portfolio.</p>
-    <p>Secure File Sharing System · Customer Account Takeover Detection</p>
+    <p>Secure File Sharing · Account Takeover Detection · NLP Smart Analyzer</p>
   </div>
 </footer>
 <script src="js/script.js"></script>

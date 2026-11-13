@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NLP Smart Analyzer | Benjamin Khoko</title>
+<meta name="description" content="NLP Smart Analyzer: a Flask application for document upload, keyword extraction, summarisation, language detection, sentiment analysis and translation.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{navy:{DEFAULT:"#0B1F3A",soft:"#1B3358"},lime:{DEFAULT:"#1FE07A",dark:"#087F43",soft:"#E9FBF1"}}}}}</script>
+<style>
+  body { font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; padding-top: 4.5rem; }
+  h1, h2, h3, .font-display { font-family: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif; letter-spacing: -0.03em; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #1FE07A; outline-offset: 3px; }
+  .card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgba(11,31,58,.28); border-color: #1FE07A; }
+  .btn { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .navlink { position: relative; }
+  .navlink::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:3px; background:#1FE07A; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+  .navlink:hover::after, .navlink[aria-current="page"]::after { transform:scaleX(1); }
+  .js .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; transition-delay:var(--d,0s); }
+  .js .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; scroll-behavior:auto !important; } .js .reveal { opacity:1; transform:none; } }
+</style>
+</head>
+<body class="bg-white text-navy antialiased">
+<header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-navy/10">
+  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[4.5rem] flex items-center justify-between" aria-label="Main">
+    <a href="index.html" class="font-display text-lg font-bold tracking-tight text-navy flex items-center gap-2"><span class="h-2.5 w-2.5 bg-lime"></span>Benjamin Khoko</a>
+    <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+      <a href="index.html" class="navlink text-navy/70 hover:text-navy transition-colors">About</a><a href="project.html" class="navlink text-navy/70 hover:text-navy transition-colors">Account Takeover</a><a href="results.html" class="navlink text-navy/70 hover:text-navy transition-colors">ML Results</a><a href="secure-file-sharing.html" class="navlink text-navy/70 hover:text-navy transition-colors">Secure Sharing</a><a href="nlp-project.html" class="navlink text-navy transition-colors" aria-current="page">NLP Analyzer</a>
+      <a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener" class="btn bg-navy px-5 py-2.5 text-white font-semibold hover:bg-lime hover:text-navy">GitHub &nearr;</a>
+    </div>
+    <button id="menu-btn" class="md:hidden p-2 text-navy" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-navy/10 bg-white px-5 pb-5 text-base font-medium">
+    <a href="index.html" class="block py-3 text-navy/70">About</a><a href="project.html" class="block py-3 text-navy/70">Account Takeover</a><a href="results.html" class="block py-3 text-navy/70">ML Results</a><a href="secure-file-sharing.html" class="block py-3 text-navy/70">Secure Sharing</a><a href="nlp-project.html" class="block py-3 font-semibold text-navy">NLP Analyzer</a>
+    <a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener" class="mt-2 block bg-navy px-5 py-3 text-center text-white font-semibold">GitHub &nearr;</a>
+  </div>
+</header>
+<main>
+
+<section class="relative overflow-hidden border-b border-navy/10">
+  <div class="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-lime/20 blur-3xl" aria-hidden="true"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="reveal text-sm font-semibold uppercase tracking-[0.2em] text-lime-dark">Project case study · Artificial intelligence</p>
+      <h1 class="reveal mt-5 text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-navy" style="--d:.08s">NLP Smart Analyzer</h1>
+      <p class="reveal mt-6 max-w-xl text-lg sm:text-xl text-navy/70 leading-relaxed" style="--d:.16s">A Flask-based workspace that turns text and documents into searchable insights using natural language processing.</p>
+      <div class="reveal mt-9 flex flex-wrap gap-4" style="--d:.24s"><a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center bg-lime px-7 py-3.5 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">View Source Code</a><a href="#evidence" class="btn inline-flex items-center justify-center border-2 border-navy px-7 py-3.5 font-semibold text-navy hover:bg-navy hover:text-white">View App Screenshots &darr;</a></div>
+    </div>
+    <div class="reveal grid grid-cols-2 gap-4" style="--d:.2s">
+      <div class="bg-navy p-6 sm:p-8 text-white"><p class="text-sm text-white/60">Input formats</p><p class="mt-3 font-display text-2xl sm:text-3xl font-bold text-lime">TXT · PDF · DOCX</p><p class="mt-2 text-sm text-white/70">Upload a document for analysis</p></div>
+      <div class="bg-lime-soft p-6 sm:p-8"><p class="text-sm text-navy/60">Application</p><p class="mt-3 font-display text-4xl sm:text-5xl font-extrabold">Flask</p><p class="mt-2 text-sm text-navy/70">Web interface and JSON API</p></div>
+      <div class="col-span-2 border border-navy/10 p-6 sm:p-8"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Project focus</p><p class="mt-3 text-lg sm:text-xl font-display font-bold">Document analysis · NLP · Information extraction</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Overview</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold">Understanding human language</h2></div>
+  <div class="grid lg:grid-cols-2 gap-12">
+    <div class="reveal"><h3 class="font-display text-2xl font-bold">What is NLP?</h3><p class="mt-4 text-xl text-navy/80 leading-relaxed"><strong>Natural Language Processing (NLP)</strong> is a branch of Artificial Intelligence (AI) that enables computers to understand, interpret, analyse and process human languages such as English, French and other languages.</p><p class="mt-5 text-navy/70 leading-relaxed">NLP combines linguistics, computer science and machine learning to support tasks such as text summarisation, keyword extraction, language detection, sentiment analysis and text classification.</p><p class="mt-5 border-l-4 border-lime bg-lime-soft p-5 text-navy/80 leading-relaxed"><strong>In simple terms:</strong> NLP enables computers to understand and work with human language, making communication between people and machines easier.</p><p class="mt-7 text-navy/70 leading-relaxed">NLP Smart Analyzer applies these ideas in a Flask web application. Users can paste text or upload a document, choose an available analysis, and review the result in the browser. The repository also documents authenticated analysis history and API endpoints.</p></div>
+    <dl class="reveal divide-y divide-navy/10 border-y border-navy/10">
+      <div class="py-4 sm:grid sm:grid-cols-3 gap-3"><dt class="text-sm text-navy/55">Category</dt><dd class="sm:col-span-2 font-medium">Artificial intelligence · Web development</dd></div>
+      <div class="py-4 sm:grid sm:grid-cols-3 gap-3"><dt class="text-sm text-navy/55">Type</dt><dd class="sm:col-span-2 font-medium">Web application</dd></div>
+      <div class="py-4 sm:grid sm:grid-cols-3 gap-3"><dt class="text-sm text-navy/55">Backend</dt><dd class="sm:col-span-2 font-medium">Python · Flask</dd></div>
+      <div class="py-4 sm:grid sm:grid-cols-3 gap-3"><dt class="text-sm text-navy/55">Storage</dt><dd class="sm:col-span-2 font-medium">SQLite by default · MySQL-ready</dd></div>
+      <div class="py-4 sm:grid sm:grid-cols-3 gap-3"><dt class="text-sm text-navy/55">Interface</dt><dd class="sm:col-span-2 font-medium">HTML · CSS · JavaScript</dd></div>
+    </dl>
+  </div>
+</div></section>
+
+<section id="features" class="py-20 sm:py-28 bg-lime-soft"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Capabilities</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold">From document to insight</h2><p class="mt-4 max-w-2xl text-lg text-navy/70">Features documented in the project repository.</p></div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <article class="card reveal border border-navy/10 bg-white p-7"><h3 class="font-display text-xl font-bold">Keyword extraction</h3><p class="mt-3 text-navy/70 leading-relaxed">Find key terms and phrases with TF-IDF, RAKE and YAKE methods.</p></article>
+    <article class="card reveal border border-navy/10 bg-white p-7" style="--d:.05s"><h3 class="font-display text-xl font-bold">Text summarisation</h3><p class="mt-3 text-navy/70 leading-relaxed">Generate extractive or abstractive summaries of submitted text.</p></article>
+    <article class="card reveal border border-navy/10 bg-white p-7" style="--d:.1s"><h3 class="font-display text-xl font-bold">Language detection</h3><p class="mt-3 text-navy/70 leading-relaxed">Identify the language of submitted text for multilingual workflows.</p></article>
+    <article class="card reveal border border-navy/10 bg-white p-7"><h3 class="font-display text-xl font-bold">Sentiment analysis</h3><p class="mt-3 text-navy/70 leading-relaxed">Analyse sentiment using VADER, with optional multilingual model support.</p></article>
+    <article class="card reveal border border-navy/10 bg-white p-7" style="--d:.05s"><h3 class="font-display text-xl font-bold">Document processing</h3><p class="mt-3 text-navy/70 leading-relaxed">Upload text, PDF or DOCX files and extract their content for analysis.</p></article>
+    <article class="card reveal border border-navy/10 bg-white p-7" style="--d:.1s"><h3 class="font-display text-xl font-bold">Translation and history</h3><p class="mt-3 text-navy/70 leading-relaxed">Translate text and revisit previous analyses from the user workspace.</p></article>
+  </div>
+</div></section>
+
+<section id="evidence" class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Application screenshots</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold">See the analyzer in action</h2><p class="mt-4 max-w-2xl text-lg text-navy/70">Screenshots of the dashboard, document workflow and NLP tools. Select an image to open it at full size.</p></div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white"><a href="images/npl/Screenshot%20(276).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(276).png" alt="NLP Smart Analyzer dashboard with document and analysis activity counts" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Analysis dashboard</h3><p class="mt-1 text-sm text-navy/65">Overview of documents processed, analyses and recent activity.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.04s"><a href="images/npl/Screenshot%20(279).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(279).png" alt="Text workspace for pasting text or uploading a document for analysis" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Text workspace</h3><p class="mt-1 text-sm text-navy/65">Paste text or upload a TXT, PDF or DOCX document.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.08s"><a href="images/npl/Screenshot%20(281).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(281).png" alt="Document library with file search, type filtering and upload controls" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Document library</h3><p class="mt-1 text-sm text-navy/65">Manage uploaded documents and start a document-based workflow.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white"><a href="images/npl/Screenshot%20(282).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(282).png" alt="Analysis history page with filters, statuses and analysis records" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Analysis history</h3><p class="mt-1 text-sm text-navy/65">Review and filter previous analysis records and their statuses.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.04s"><a href="images/npl/Screenshot%20(283).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(283).png" alt="Keyword extraction controls for selecting an algorithm and number of keywords" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Keyword extraction</h3><p class="mt-1 text-sm text-navy/65">Choose a keyword method and the number of terms to extract.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.08s"><a href="images/npl/Screenshot%20(284).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(284).png" alt="Text summarisation settings for choosing summary type and length" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Text summarisation</h3><p class="mt-1 text-sm text-navy/65">Select extractive or abstractive summarisation and the desired length.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white"><a href="images/npl/Screenshot%20(285).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(285).png" alt="Language detection tool in the NLP Smart Analyzer workspace" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Language detection</h3><p class="mt-1 text-sm text-navy/65">Detect the dominant language in the submitted text.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.04s"><a href="images/npl/Screenshot%20(286).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(286).png" alt="Sentiment analysis tool in the NLP Smart Analyzer workspace" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Sentiment analysis</h3><p class="mt-1 text-sm text-navy/65">Analyse positive, neutral and negative language with VADER.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.08s"><a href="images/npl/Screenshot%20(287).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(287).png" alt="Text explanation and simplification tool with selectable explanation levels" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Text explanation</h3><p class="mt-1 text-sm text-navy/65">Choose an explanation level to simplify a difficult passage.</p></figcaption></figure>
+    <figure class="card reveal overflow-hidden border border-navy/10 bg-white" style="--d:.12s"><a href="images/npl/Screenshot%20(288).png" target="_blank" rel="noopener"><img src="images/npl/Screenshot%20(288).png" alt="Translation tool with source language detection and target language selection" loading="lazy" class="aspect-video w-full object-cover object-top"></a><figcaption class="p-5"><h3 class="font-display text-lg font-bold">Translation</h3><p class="mt-1 text-sm text-navy/65">Choose a target language and configured translation provider.</p></figcaption></figure>
+  </div>
+</div></section>
+
+<section class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="reveal grid lg:grid-cols-12 gap-8 py-12 border-t border-navy/10">
+    <div class="lg:col-span-3"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Technology</p><h2 class="mt-2 font-display text-3xl font-extrabold">Tools in the project</h2></div>
+    <div class="lg:col-span-9"><p class="text-lg text-navy/70 leading-relaxed">Selected technologies documented by the application repository; libraries are used for their specific NLP, data, web and document-processing roles.</p><div class="mt-6 flex flex-wrap gap-3"><span class="border border-navy/15 px-4 py-2 text-sm font-medium">Python</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">Flask</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">Flask-SQLAlchemy</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">SQLite</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">NLTK</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">spaCy</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">scikit-learn</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">YAKE · RAKE</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">Transformers · PyTorch</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">PyMuPDF · python-docx</span><span class="border border-navy/15 px-4 py-2 text-sm font-medium">HTML · CSS · JavaScript</span></div></div>
+  </div>
+  <div class="reveal grid lg:grid-cols-12 gap-8 py-12 border-t border-navy/10">
+    <div class="lg:col-span-3"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">My contribution</p><h2 class="mt-2 font-display text-3xl font-extrabold">Building the application</h2></div>
+    <div class="lg:col-span-9"><p class="text-lg text-navy/70 leading-relaxed">I developed the Flask application and its user-facing text-analysis workflow, integrating NLP tools for keyword extraction, summarisation, language detection, sentiment analysis and document processing. The project also brings together user authentication, analysis history and API functionality.</p><p class="mt-5 text-navy/70 leading-relaxed">The repository includes setup instructions and automated tests. Its documented test command is <span class="font-mono text-sm">pytest</span>.</p></div>
+  </div>
+  <div class="reveal grid lg:grid-cols-12 gap-8 py-12 border-y border-navy/10">
+    <div class="lg:col-span-3"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Project resources</p><h2 class="mt-2 font-display text-3xl font-extrabold">Explore the source</h2></div>
+    <div class="lg:col-span-9"><p class="text-lg text-navy/70 leading-relaxed">The source code and project documentation are available on GitHub. A separate live demo and project report have not been provided.</p><div class="mt-6 flex flex-wrap gap-3"><a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center bg-lime px-6 py-3 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">GitHub repository &nearr;</a><a href="index.html#projects" class="btn inline-flex items-center justify-center border-2 border-navy px-6 py-3 font-semibold text-navy hover:bg-navy hover:text-white">All projects</a></div></div>
+  </div>
+</div></section>
+
+</main>
+<footer class="border-t border-navy/10 text-navy/60 text-sm">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between gap-2">
+    <p>&copy; <span id="year">2026</span> Benjamin Khoko. Academic project portfolio.</p>
+    <p>NLP Smart Analyzer · <a href="index.html#projects" class="underline hover:text-navy">More projects</a></p>
+  </div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Benjamin Khoko: Student Portfolio
 
-Static portfolio featuring the **Secure File Sharing System** and **Customer Account Takeover Detection** projects.
+Static portfolio featuring the **Secure File Sharing System**, **Customer Account Takeover Detection**, and **NLP Smart Analyzer** projects.
 Built with HTML5, Tailwind CSS (CDN) and vanilla JavaScript. No build step, no backend.
 
 **Design:** white background, dark navy text, one bright-green accent. Large type, rounded cards, fixed top navigation, subtle scroll and hover animations (disabled automatically for visitors who prefer reduced motion).
@@ -13,10 +13,12 @@ student-portfolio/
 ├── project.html      Account-takeover ML case study
 ├── results.html      Account-takeover ML results & resources
 ├── secure-file-sharing.html  Secure file-sharing case study & evidence
+├── nlp-project.html            NLP Smart Analyzer case study
 ├── images/
 │   ├── profile.jpg
 │   ├── confusion_matrix.png
 │   ├── feature_importance.png
+│   ├── npl/                NLP application screenshots
 │   └── secure file sharing/   Project screenshots and redacted public copies
 ├── js/script.js      Interactions + your RESULTS numbers
 └── README.md
@@ -46,6 +48,10 @@ Placeholders are highlighted in yellow on the pages. Search the project for `YOU
 | `YOUR_DOCUMENTATION_URL`, `YOUR_REPORT_URL` | `results.html` |
 | `[Dataset name]`, `[Dataset source]`, `[Number of records]`, `[Number of features]`, `[Target variable]` | `project.html` dataset section |
 | `--%` probability | `results.html` (once the Flask model is connected) |
+
+The NLP Smart Analyzer case study links to its source repository:
+[benjakhoko/A-working-NLP-application](https://github.com/benjakhoko/A-working-NLP-application).
+The case study lists the features and technologies documented in that repository.
 
 ## Deploy on GitHub Pages
 
