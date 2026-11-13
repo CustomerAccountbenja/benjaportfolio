@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://customeraccountbenja.github.io/benjaportfolio/sitemap.xml

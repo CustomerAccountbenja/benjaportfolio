@@ -14,8 +14,12 @@ student-portfolio/
 ├── results.html      Account-takeover ML results & resources
 ├── secure-file-sharing.html  Secure file-sharing case study & evidence
 ├── nlp-project.html            NLP Smart Analyzer case study
+├── 404.html          Custom "page not found" page for GitHub Pages
+├── robots.txt        Crawler rules + sitemap location
+├── sitemap.xml       Indexable page list
 ├── images/
-│   ├── profile.jpg
+│   ├── favicon.svg         Site icon
+│   ├── profile.jpg         Portrait shown on the home page
 │   ├── cc/                 Account-takeover charts and model comparison data
 │   ├── npl/                NLP application screenshots
 │   └── secure file sharing/   Project screenshots and redacted public copies
@@ -23,16 +27,25 @@ student-portfolio/
 └── README.md
 ```
 
+Every page also carries a canonical URL, Open Graph / Twitter preview tags and the SVG favicon.
+`results.html` offers `images/cc/model_comparison.csv` as a direct download alongside the
+GitHub, dataset, documentation and report resources.
+
 ## Enter your results
 
 Open `js/script.js` and fill in the `RESULTS` block at the top with your **test-set** percentages
 (for example `accuracy: 93.8`). The big stat cards, the model-comparison bars and the table on
 `results.html` all update from that one block. Set `bestModel` to the name of your top model.
-Anything left as `null` shows as an em dash.
+Anything left as `null` shows as an em dash. The raw figures live in
+`images/cc/model_comparison.csv`, which the results page offers as a download.
 
 Screenshots used on the secure file-sharing case study are included under
-`images/secure file sharing/`. Captures containing account details are redacted
-for display, and their unredacted source files are excluded from Git.
+`images/secure file sharing/`. The page only links to the redacted copies
+(`Login-redacted.png`, `Activity-logs-redacted.png`,
+`Encryption-evidence-redacted.png`). The unredacted originals are listed in
+`.gitignore`, but any copy that was committed before the rule was added is
+still present in the repository history, so clear it from history before
+publishing if those captures contain private details.
 
 ## Personal details
 
@@ -60,6 +73,10 @@ The case study lists the features and technologies documented in that repository
 2. Open **Settings → Pages**.
 3. Under **Build and deployment**, set **Source** to *Deploy from a branch*, choose the `main` branch and the `/ (root)` folder, then click **Save**.
 4. After a minute your site is live at `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
+
+The canonical, Open Graph and Twitter URLs plus `robots.txt` and `sitemap.xml` currently assume
+`https://customeraccountbenja.github.io/benjaportfolio/`. If the repository name or account
+changes, update those URLs in all five pages, `robots.txt` and `sitemap.xml`.
 
 ## Test locally
 

@@ -1,4 +1,11 @@
+# Unredacted source screenshots (never publish)
 /images/secure file sharing/Login .png
 /images/secure file sharing/Activity logs..png
 /images/secure file sharing/profile.png
 /images/secure file sharing/Evidence of encrypted file storage.png
+
+# Local Git backup directory and OS clutter
+.git-backup/
+.DS_Store
+Thumbs.db
+desktop.ini
