@@ -16,8 +16,7 @@ student-portfolio/
 ├── nlp-project.html            NLP Smart Analyzer case study
 ├── images/
 │   ├── profile.jpg
-│   ├── confusion_matrix.png
-│   ├── feature_importance.png
+│   ├── cc/                 Account-takeover charts and model comparison data
 │   ├── npl/                NLP application screenshots
 │   └── secure file sharing/   Project screenshots and redacted public copies
 ├── js/script.js      Interactions + your RESULTS numbers
