@@ -69,7 +69,7 @@
 
 <section class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
   <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Best model</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy"><span data-best-model>Best model</span></h2><p class="mt-3 text-navy/70 max-w-2xl text-lg">Test-set performance of the best-performing model. <span class="block mt-2 text-sm text-navy/55">Note: the dataset is synthetic and highly separable; these scores would be lower on real-world traffic.</span></p></div>
-  <div class="grid sm:grid-cols-3 gap-5"><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="accuracy">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Accuracy</p></div><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="precision">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Precision</p></div><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="recall">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Recall</p></div></div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="accuracy">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Accuracy</p></div><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="precision">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Precision</p></div><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="recall">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Recall</p></div><div class="card reveal border border-navy/10 bg-white p-8 text-center"><p class="font-display text-6xl sm:text-7xl font-extrabold text-navy" data-stat="roc_auc">&mdash;</p><p class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">ROC-AUC</p></div></div>
 </div></section>
 
 <section class="py-20 sm:py-28 bg-lime-soft"><div class="max-w-6xl mx-auto px-5 sm:px-8">
@@ -77,7 +77,7 @@
   <div id="bars" class="reveal space-y-6 max-w-3xl"></div>
   <div class="reveal mt-12 overflow-x-auto border border-navy/10 bg-white">
     <table class="min-w-full text-sm sm:text-base">
-      <thead class="bg-navy text-white"><tr><th scope="col" class="px-5 sm:px-7 py-4 text-left font-semibold">Model</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">Accuracy</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">Precision</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">Recall</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">F1-Score</th></tr></thead>
+      <thead class="bg-navy text-white"><tr><th scope="col" class="px-5 sm:px-7 py-4 text-left font-semibold">Model</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">Accuracy</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">Precision</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">Recall</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">F1-Score</th><th scope="col" class="px-5 sm:px-7 py-4 font-semibold">ROC-AUC</th></tr></thead>
       <tbody id="perf-body"></tbody>
     </table>
   </div>
@@ -144,12 +144,12 @@
       <p class="mt-1 text-navy/65 text-sm">Project README and setup guide</p>
       <p class="mt-4 text-xs"><span class="link-tag">github.com/.../#readme</span></p>
     </a>
-    <a href="#" target="_blank" rel="noopener" class="card reveal block border border-navy/10 bg-white p-7" style="--d:0.21s">
+    <div class="card reveal border border-navy/10 bg-white p-7" style="--d:0.21s">
       <span class="block h-2 w-8 bg-lime"></span>
-      <h3 class="mt-5 font-display text-xl font-bold">Project Report <span class="text-lime-dark">&nearr;</span></h3>
-      <p class="mt-1 text-navy/65 text-sm">Complete academic report</p>
-      <p class="mt-4 text-xs"><span class="placeholder-tag">add link when ready</span></p>
-    </a>
+      <h3 class="mt-5 font-display text-xl font-bold">Project Report</h3>
+      <p class="mt-1 text-navy/65 text-sm">Full methodology, evaluation and discussion</p>
+      <p class="mt-4 text-xs"><span class="link-tag">available on request</span></p>
+    </div>
   </div>
 </div></section>
 

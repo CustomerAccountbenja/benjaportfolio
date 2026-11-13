@@ -34,19 +34,21 @@ Screenshots used on the secure file-sharing case study are included under
 `images/secure file sharing/`. Captures containing account details are redacted
 for display, and their unredacted source files are excluded from Git.
 
-## Replace the placeholders
+## Personal details
 
-Placeholders are highlighted in yellow on the pages. Search the project for `YOUR_` and `[`.
+The contact and education sections are filled in:
 
-| Placeholder | Where |
-|---|---|
-| `YOUR_EMAIL`, `YOUR_GITHUB_URL`, `YOUR_LINKEDIN_URL`, `YOUR_LOCATION` | `index.html` contact section |
-| `[University Name]`, `[School Name]`, `[Year]` | `index.html` education timeline |
-| `YOUR_GITHUB_REPOSITORY_URL` | project pages (navbar GitHub button, source code and resource links) |
-| `YOUR_DATASET_URL` | `project.html`, `results.html` |
-| `YOUR_DOCUMENTATION_URL`, `YOUR_REPORT_URL` | `results.html` |
-| `[Dataset name]`, `[Dataset source]`, `[Number of records]`, `[Number of features]`, `[Target variable]` | `project.html` dataset section |
-| `--%` probability | `results.html` (once the Flask model is connected) |
+- **Email:** benjaminkhoko@gmail.com
+- **GitHub:** <https://github.com/benjakhoko/>
+- **LinkedIn:** <https://www.linkedin.com/in/benjamin-khoko-856179406>
+- **Location:** Malawi
+- **Education:** Computer Science, DMI St John the Baptist University, 2023&ndash;2026
+
+The account-takeover case study is filled in with the real dataset details:
+Login Data Set for Risk-Based Authentication (Zenodo record 6782156), 50,141
+sampled login attempts, 12 model features, target `Is Account Takeover`, and a
+link to <https://zenodo.org/records/6782156>. The project report is listed as
+available on request until a public link exists.
 
 The NLP Smart Analyzer case study links to its source repository:
 [benjakhoko/A-working-NLP-application](https://github.com/benjakhoko/A-working-NLP-application).

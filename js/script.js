@@ -7,9 +7,9 @@
 const RESULTS = {
   bestModel: "Random Forest",
   models: {
-    "Random Forest":       { accuracy: 100.00, precision: 100.00, recall: 100.00, f1: 100.00 },
-    "Decision Tree":       { accuracy:  99.62, precision:  41.94, recall:  92.86, f1:  57.78 },
-    "Logistic Regression": { accuracy:  99.77, precision:  54.90, recall: 100.00, f1:  70.89 }
+    "Random Forest":       { accuracy: 100.00, precision: 100.00, recall: 100.00, f1: 100.00, roc_auc: 100.00 },
+    "Decision Tree":       { accuracy:  99.62, precision:  41.94, recall:  92.86, f1:  57.78, roc_auc:  96.42 },
+    "Logistic Regression": { accuracy:  99.77, precision:  54.90, recall: 100.00, f1:  70.89, roc_auc:  99.99 }
   }
 };
 
@@ -77,7 +77,7 @@ const body = document.getElementById("perf-body");
 if (body) {
   body.innerHTML = Object.entries(RESULTS.models).map(([n, m]) =>
     `<tr class="border-t border-navy/10"><th scope="row" class="px-5 sm:px-7 py-4 text-left font-semibold whitespace-nowrap">${n}</th>` +
-    ["accuracy", "precision", "recall", "f1"].map(k => `<td class="px-5 sm:px-7 py-4 text-center ${typeof m[k] === "number" ? "" : "text-navy/35"}">${fmt(m[k])}</td>`).join("") + "</tr>").join("");
+    ["accuracy", "precision", "recall", "f1", "roc_auc"].map(k => `<td class="px-5 sm:px-7 py-4 text-center ${typeof m[k] === "number" ? "" : "text-navy/35"}">${fmt(m[k])}</td>`).join("") + "</tr>").join("");
 }
 
 // Scroll reveal + one-time bar/number animations
