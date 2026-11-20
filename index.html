@@ -1,153 +1,313 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About | Benjamin Khoko</title>
-<meta name="description" content="Student portfolio of Benjamin Khoko, featuring web development, machine learning and natural language processing projects.">
-<meta name="theme-color" content="#ffffff">
+<title>Benjamin Khoko | Computer Science Student & Developer</title>
+<meta name="description" content="Portfolio of Benjamin Khoko, a computer science student building secure web applications, applied machine learning, natural language processing tools and hardened Linux systems.">
+<meta name="theme-color" content="#0c1210">
 <meta name="author" content="Benjamin Khoko">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="canonical" href="https://customeraccountbenja.github.io/benjaportfolio/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Benjamin Khoko">
-<meta property="og:title" content="Benjamin Khoko | Student Portfolio">
-<meta property="og:description" content="Student portfolio of Benjamin Khoko, featuring web development, machine learning and natural language processing projects.">
+<meta property="og:title" content="Benjamin Khoko | Computer Science Student & Developer">
+<meta property="og:description" content="Secure web applications, applied machine learning, natural language processing and Linux hardening.">
 <meta property="og:url" content="https://customeraccountbenja.github.io/benjaportfolio/">
 <meta property="og:image" content="https://customeraccountbenja.github.io/benjaportfolio/images/profile.jpg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Benjamin Khoko | Student Portfolio">
-<meta name="twitter:description" content="Student portfolio of Benjamin Khoko, featuring web development, machine learning and natural language processing projects.">
+<meta name="twitter:title" content="Benjamin Khoko | Computer Science Student & Developer">
+<meta name="twitter:description" content="Secure web applications, applied machine learning, natural language processing and Linux hardening.">
 <meta name="twitter:image" content="https://customeraccountbenja.github.io/benjaportfolio/images/profile.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 <script>document.documentElement.classList.add("js")</script>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{navy:{DEFAULT:"#0B1F3A",soft:"#1B3358"},lime:{DEFAULT:"#1FE07A",dark:"#087F43",soft:"#E9FBF1"}}}}}</script>
-<style>
-  body { font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; padding-top: 4.5rem; }
-  h1, h2, h3, .font-display { font-family: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif; letter-spacing: -0.03em; }
-  a:focus-visible, button:focus-visible { outline: 3px solid #1FE07A; outline-offset: 3px; }
-  .card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgba(11,31,58,.28); border-color: #1FE07A; }
-  .btn { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
-  .btn:hover { transform: translateY(-2px); }
-  .navlink { position: relative; }
-  .navlink::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:3px; background:#1FE07A; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
-  .navlink:hover::after, .navlink[aria-current="page"]::after { transform:scaleX(1); }
-  .js .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; transition-delay:var(--d,0s); }
-  .js .reveal.in { opacity:1; transform:none; }
-  .bar-fill { width:0; transition:width 1.1s cubic-bezier(.2,.8,.2,1); }
-  .feed-row { opacity:0; animation: rowin .5s ease-out forwards; }
-  .flag-row { background:#1FE07A; color:#0B1F3A; animation: rowin .5s ease-out 2.2s forwards, flag .7s ease-out 2.9s both; }
-  @keyframes rowin { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
-  @keyframes flag { from { background:#1B3358; color:#e2e8f0; } }
-  @keyframes floaty { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
-  .floaty { animation: floaty 6s ease-in-out infinite; }
-  @media (prefers-reduced-motion: reduce) {
-    * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
-    .feed-row, .flag-row { opacity:1 !important; } .js .reveal { opacity:1; transform:none; }
-  }
-  .placeholder-tag { background:#fef3c7; color:#92400e; padding:0 .3rem; font-family:ui-monospace,monospace; font-size:.85em; }
-</style>
 </head>
-<body class="bg-white text-navy antialiased">
-<header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-navy/10">
-  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[4.5rem] flex items-center justify-between" aria-label="Main">
-    <a href="index.html" class="font-display text-lg font-bold tracking-tight text-navy flex items-center gap-2"><span class="h-2.5 w-2.5 bg-lime"></span>Benjamin Khoko</a>
-    <div class="hidden md:flex items-center gap-9 text-sm font-medium">
-      <a href="index.html" class="navlink text-navy transition-colors" aria-current="page">About</a><a href="project.html" class="navlink text-navy/70 hover:text-navy transition-colors">Account Takeover</a><a href="results.html" class="navlink text-navy/70 hover:text-navy transition-colors">ML Results</a><a href="secure-file-sharing.html" class="navlink text-navy/70 hover:text-navy transition-colors">Secure Sharing</a><a href="nlp-project.html" class="navlink text-navy/70 hover:text-navy transition-colors">NLP Analyzer</a>
-      <a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener" class="btn bg-navy px-5 py-2.5 text-white font-semibold hover:bg-lime hover:text-navy">GitHub &nearr;</a>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <nav class="site-nav container" aria-label="Main">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span>Benjamin Khoko<span class="brand-sub">Computer Science</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#contact">Contact</a>
     </div>
-    <button id="menu-btn" class="md:hidden p-2 text-navy" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
+    <div class="nav-actions">
+      <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener" class="btn btn-outline btn-sm nav-github">GitHub <span class="arrow">&nearr;</span></a>
+      <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </nav>
-  <div id="mobile-menu" class="hidden md:hidden border-t border-navy/10 bg-white px-5 pb-5 text-base font-medium">
-    <a href="index.html" class="block py-3 font-semibold text-navy">About</a><a href="project.html" class="block py-3 text-navy/70">Account Takeover</a><a href="results.html" class="block py-3 text-navy/70">ML Results</a><a href="secure-file-sharing.html" class="block py-3 text-navy/70">Secure Sharing</a><a href="nlp-project.html" class="block py-3 text-navy/70">NLP Analyzer</a>
-    <a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener" class="mt-2 block bg-navy px-5 py-3 text-center text-white font-semibold">GitHub &nearr;</a>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="container">
+      <a href="#work">Work <span aria-hidden="true">&rarr;</span></a>
+      <a href="#about">About <span aria-hidden="true">&rarr;</span></a>
+      <a href="#toolkit">Toolkit <span aria-hidden="true">&rarr;</span></a>
+      <a href="#contact">Contact <span aria-hidden="true">&rarr;</span></a>
+      <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener" class="btn btn-primary">GitHub <span class="arrow">&nearr;</span></a>
+    </div>
   </div>
 </header>
-<main>
 
-<section class="relative overflow-hidden">
-  <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-lime/25 blur-3xl" aria-hidden="true"></div>
-  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 grid lg:grid-cols-5 gap-14 items-center">
-    <div class="lg:col-span-3">
-      <p class="reveal text-sm font-semibold uppercase tracking-[0.2em] text-lime-dark">Hello, I&rsquo;m Benjamin <span class="text-navy/40 mx-1">/</span> <span class="text-navy/60">Computer Science student</span></p>
-      <h1 class="reveal mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] text-navy max-w-xl" style="--d:.08s">I build practical software with <span class="bg-lime px-2">security in mind.</span></h1>
-      <p class="reveal mt-6 text-base sm:text-lg text-navy/70 max-w-lg leading-relaxed" style="--d:.16s">My projects explore secure web applications, file encryption, access control and machine learning.</p>
-      <div class="reveal mt-10 flex flex-wrap gap-4" style="--d:.24s"><a href="#projects" class="btn inline-flex items-center justify-center bg-lime px-7 py-3.5 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">Explore My Work &rarr;</a><a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center border-2 border-navy px-7 py-3.5 font-semibold text-navy hover:bg-navy hover:text-white">GitHub</a></div>
-    </div>
-    <div class="lg:col-span-2 flex justify-center reveal" style="--d:.2s">
-      <div class="relative floaty">
-        <div class="absolute inset-0 translate-x-4 translate-y-4 bg-lime" aria-hidden="true"></div>
-        <div class="relative h-72 w-72 sm:h-80 sm:w-80 overflow-hidden bg-navy" data-img-wrap>
-          <img src="images/profile.jpg" alt="Portrait of Benjamin Khoko" class="h-full w-full object-cover">
-          <div data-img-fallback class="hidden absolute inset-0 flex-col items-center justify-center text-lime text-center p-4"><svg class="h-20 w-20" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><p class="mt-2 text-sm text-white/80">Portrait of Benjamin Khoko</p></div>
+<main id="main">
+
+  <section class="hero">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-badge"><span class="status-dot" aria-hidden="true"></span> Open to internships &amp; junior roles</p>
+        <h1>I build software that <em>earns trust.</em></h1>
+        <p class="hero-lead">Computer science student in Malawi crafting secure web applications, applied machine learning, natural language tools and hardened Linux systems &mdash; with clean interfaces and careful testing.</p>
+        <div class="hero-ctas">
+          <a href="#work" class="btn btn-mint">Explore selected work <span class="arrow">&searr;</span></a>
+          <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener" class="btn btn-outline-light">GitHub <span class="arrow">&nearr;</span></a>
+        </div>
+        <dl class="hero-meta">
+          <div><dt>Selected projects</dt><dd>04</dd></div>
+          <div><dt>Automated tests</dt><dd>151+</dd></div>
+          <div><dt>Graduating</dt><dd>2026</dd></div>
+        </dl>
+      </div>
+      <div class="portrait reveal" style="--d:.15s">
+        <div class="portrait-frame" data-img-wrap>
+          <img src="images/profile.jpg" alt="Portrait of Benjamin Khoko">
+          <div class="img-fallback" data-img-fallback aria-hidden="true"><span>BK</span><span style="font-family:var(--font-sans);font-size:.8rem;color:rgba(255,255,255,.6)">Portrait of Benjamin Khoko</span></div>
+        </div>
+        <div class="portrait-card">
+          <span class="mono">Currently</span>
+          <strong>BSc Computer Science</strong>
+          <span>DMI St John the Baptist University</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>Python</span><span>Flask</span><span>JavaScript</span><span>SQL</span><span>Cryptography</span><span>Scikit-learn</span><span>NLTK</span><span>spaCy</span><span>Transformers</span><span>pytest</span><span>Lynis</span><span>UFW</span>
+        </div>
+        <div class="marquee-group">
+          <span>Python</span><span>Flask</span><span>JavaScript</span><span>SQL</span><span>Cryptography</span><span>Scikit-learn</span><span>NLTK</span><span>spaCy</span><span>Transformers</span><span>pytest</span><span>Lynis</span><span>UFW</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="profile" class="py-20 sm:py-28 border-t border-navy/10"><div class="max-w-6xl mx-auto px-5 sm:px-8">
-  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Profile</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Professional profile</h2></div>
-  <dl class="reveal max-w-4xl"><div class="py-4 border-b border-navy/10 last:border-0 sm:grid sm:grid-cols-3 gap-4"><dt class="text-sm font-medium text-navy/55">Name</dt><dd class="sm:col-span-2 font-medium text-navy">Benjamin Khoko</dd></div><div class="py-4 border-b border-navy/10 last:border-0 sm:grid sm:grid-cols-3 gap-4"><dt class="text-sm font-medium text-navy/55">Academic background</dt><dd class="sm:col-span-2 font-medium text-navy">Computer Science student &middot; DMI St John the Baptist University (2023&ndash;2026)</dd></div><div class="py-4 border-b border-navy/10 last:border-0 sm:grid sm:grid-cols-3 gap-4"><dt class="text-sm font-medium text-navy/55">Programming interests</dt><dd class="sm:col-span-2 font-medium text-navy">Python, Flask, JavaScript, web development</dd></div><div class="py-4 border-b border-navy/10 last:border-0 sm:grid sm:grid-cols-3 gap-4"><dt class="text-sm font-medium text-navy/55">Technical interests</dt><dd class="sm:col-span-2 font-medium text-navy">Cybersecurity and machine learning</dd></div><div class="py-4 border-b border-navy/10 last:border-0 sm:grid sm:grid-cols-3 gap-4"><dt class="text-sm font-medium text-navy/55">Career interests</dt><dd class="sm:col-span-2 font-medium text-navy">Software development, web development, and machine learning engineering</dd></div></dl>
-</div></section>
+  <section id="work" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2 class="section-title">Projects built to <em>be used.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s">Four end-to-end builds spanning security engineering, applied machine learning, natural language processing and Linux hardening.</p>
+      </div>
 
-<section id="skills" class="py-20 sm:py-28 bg-lime-soft"><div class="max-w-6xl mx-auto px-5 sm:px-8">
-  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Skills</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Tools I work with</h2></div>
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-5"><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.00s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Python</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.05s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Flask</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.10s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">JavaScript</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.15s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">HTML</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.20s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">CSS</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.25s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">SQL & SQLite</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.30s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Cryptography</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.35s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Bootstrap 5</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.40s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Cybersecurity</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.45s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Machine Learning</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.50s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Scikit-learn</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.55s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Pandas &amp; NumPy</p></div><div class="card reveal border border-navy/10 bg-white px-6 py-7" style="--d:0.60s"><span class="block h-2 w-8 bg-lime"></span><p class="mt-4 font-display text-xl font-bold text-navy">Git &amp; GitHub</p></div></div>
-</div></section>
+      <div class="project-list">
+        <article class="project-card project-card--feature reveal">
+          <div class="project-media">
+            <span class="project-index">01</span>
+            <img src="images/secure%20file%20sharing/User%20dashboard.png" alt="CipherVault secure file-sharing dashboard" loading="lazy">
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Cybersecurity &middot; Flask</p>
+            <h3 class="project-title">Secure File Sharing System</h3>
+            <p class="project-desc">A web application prototype for encrypted document storage and controlled sharing, with AES-256-GCM encryption, granular permissions, revocation and activity monitoring.</p>
+            <ul class="project-tags">
+              <li>Python</li><li>Flask</li><li>SQLite</li><li>AES-GCM</li><li>Bootstrap 5</li>
+            </ul>
+            <div class="project-links">
+              <a href="secure-file-sharing.html" class="primary">View case study <span class="arrow">&rarr;</span></a>
+              <a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener">Source code <span class="arrow">&nearr;</span></a>
+            </div>
+          </div>
+        </article>
 
-<section id="education" class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
-  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Background</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Education</h2></div>
-  <ol class="max-w-xl reveal">
-    <li class="relative pl-9"><span class="absolute left-0 top-1.5 h-4 w-4 bg-lime ring-4 ring-lime-soft"></span>
-      <h3 class="font-display text-xl font-bold">Bachelor&rsquo;s Degree</h3><p class="text-navy/70">Computer Science &middot; DMI St John the Baptist University</p><p class="text-sm mt-1 text-navy/55">2023 &ndash; 2026</p></li>
-  </ol>
-</div></section>
+        <article class="project-card reveal" style="--d:.08s">
+          <div class="project-media">
+            <span class="project-index">02</span>
+            <img src="images/cc/feature_importance.png" alt="Feature importance chart for account takeover detection" loading="lazy">
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Machine learning</p>
+            <h3 class="project-title">Customer Account Takeover Detection</h3>
+            <p class="project-desc">A supervised learning project comparing classifiers for spotting potentially compromised customer accounts, integrated into a Flask prediction app.</p>
+            <ul class="project-tags">
+              <li>Python</li><li>Flask</li><li>Scikit-learn</li><li>Random Forest</li>
+            </ul>
+            <div class="project-links">
+              <a href="project.html" class="primary">View case study <span class="arrow">&rarr;</span></a>
+              <a href="results.html">View results <span class="arrow">&rarr;</span></a>
+            </div>
+          </div>
+        </article>
 
-<section id="projects" class="py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5 sm:px-8">
-  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Selected work</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Projects</h2></div>
-  <div class="grid md:grid-cols-2 gap-6">
-    <article class="card reveal flex flex-col border border-navy/10 bg-white p-8 sm:p-10">
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Cybersecurity · Flask</p>
-      <h3 class="mt-4 font-display text-3xl sm:text-4xl font-extrabold">Secure File Sharing System</h3>
-      <p class="mt-4 text-navy/70 text-lg leading-relaxed">A web app prototype for encrypted document storage and controlled sharing, with AES-256-GCM, permissions, revocation and activity monitoring.</p>
-      <p class="mt-5 text-sm text-navy/55">Python · Flask · SQLite · Cryptography · Bootstrap 5</p>
-      <div class="mt-auto pt-8 flex flex-wrap gap-3"><a href="secure-file-sharing.html" class="btn inline-flex items-center justify-center bg-lime px-6 py-3 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">View case study &rarr;</a><a href="https://github.com/benjakhoko/SECURE-FILE-SHARING-SYSTEM-" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center border-2 border-navy px-6 py-3 font-semibold text-navy hover:bg-navy hover:text-white">Source code</a></div>
-    </article>
-    <article class="card reveal flex flex-col border border-navy/10 bg-white p-8 sm:p-10" style="--d:.08s">
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Machine learning</p>
-      <h3 class="mt-4 font-display text-3xl sm:text-4xl font-extrabold">Customer Account Takeover Detection</h3>
-      <p class="mt-4 text-navy/70 text-lg leading-relaxed">A supervised machine-learning project that compares classifiers for identifying potentially compromised customer accounts.</p>
-      <p class="mt-5 text-sm text-navy/55">Python · Flask · Classification · Model evaluation</p>
-      <div class="mt-auto pt-8 flex flex-wrap gap-3"><a href="project.html" class="btn inline-flex items-center justify-center bg-navy px-6 py-3 font-semibold text-white hover:bg-lime hover:text-navy">View case study &rarr;</a><a href="results.html" class="btn inline-flex items-center justify-center border-2 border-navy px-6 py-3 font-semibold text-navy hover:bg-navy hover:text-white">View results</a></div>
-    </article>
-    <article class="card reveal flex flex-col border border-navy/10 bg-white p-8 sm:p-10">
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Artificial intelligence · NLP</p>
-      <h3 class="mt-4 font-display text-3xl sm:text-4xl font-extrabold">NLP Smart Analyzer</h3>
-      <p class="mt-4 text-navy/70 text-lg leading-relaxed">A full-stack Flask workspace for analysing text and documents with six NLP tools, PDF reporting, user accounts, analysis history and an admin panel, backed by a reproducible evaluation suite.</p>
-      <p class="mt-5 text-sm text-navy/55">Python · Flask · SQLAlchemy · NLTK · spaCy · Transformers · SQLite</p>
-      <div class="mt-auto pt-8 flex flex-wrap gap-3"><a href="nlp-project.html" class="btn inline-flex items-center justify-center bg-lime px-6 py-3 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">View case study &rarr;</a><a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener" class="btn inline-flex items-center justify-center border-2 border-navy px-6 py-3 font-semibold text-navy hover:bg-navy hover:text-white">Source code</a></div>
-    </article>
-  </div>
-</div></section>
+        <article class="project-card reveal" style="--d:.16s">
+          <div class="project-media">
+            <span class="project-index">03</span>
+            <img src="images/npl/Screenshot%20(276).png" alt="NLP Smart Analyzer dashboard" loading="lazy">
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Artificial intelligence &middot; NLP</p>
+            <h3 class="project-title">NLP Smart Analyzer</h3>
+            <p class="project-desc">A full-stack Flask workspace for analysing text and documents with six NLP tools, PDF reporting, accounts and history &mdash; backed by a reproducible evaluation suite.</p>
+            <ul class="project-tags">
+              <li>Python</li><li>Flask</li><li>NLTK</li><li>spaCy</li><li>Transformers</li>
+            </ul>
+            <div class="project-links">
+              <a href="nlp-project.html" class="primary">View case study <span class="arrow">&rarr;</span></a>
+              <a href="https://github.com/benjakhoko/A-working-NLP-application" target="_blank" rel="noopener">Source code <span class="arrow">&nearr;</span></a>
+            </div>
+          </div>
+        </article>
 
-<section id="contact" class="py-20 sm:py-28 border-t border-navy/10"><div class="max-w-6xl mx-auto px-5 sm:px-8">
-  <div class="mb-12 reveal"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-lime-dark">Contact</p><h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-navy">Get in touch</h2></div>
-  <div class="grid sm:grid-cols-2 gap-5"><div class="card reveal border border-navy/10 bg-white p-6" style="--d:0.00s"><p class="text-sm text-navy/55">Email</p><p class="mt-1 font-semibold text-navy break-all"><a href="mailto:benjaminkhoko@gmail.com" class="hover:text-lime-dark">benjaminkhoko@gmail.com</a></p></div><div class="card reveal border border-navy/10 bg-white p-6" style="--d:0.05s"><p class="text-sm text-navy/55">GitHub</p><p class="mt-1 font-semibold text-navy break-all"><a href="https://github.com/benjakhoko/" target="_blank" rel="noopener" class="hover:text-lime-dark">github.com/benjakhoko</a></p></div><div class="card reveal border border-navy/10 bg-white p-6" style="--d:0.10s"><p class="text-sm text-navy/55">LinkedIn</p><p class="mt-1 font-semibold text-navy break-all"><a href="https://www.linkedin.com/in/benjamin-khoko-856179406" target="_blank" rel="noopener" class="hover:text-lime-dark">linkedin.com/in/benjamin-khoko-856179406</a></p></div><div class="card reveal border border-navy/10 bg-white p-6" style="--d:0.15s"><p class="text-sm text-navy/55">Location</p><p class="mt-1 font-semibold text-navy">Malawi</p></div></div>
-</div></section>
+        <article class="project-card project-card--feature reveal" style="--d:.24s">
+          <div class="project-media">
+            <span class="project-index">04</span>
+            <img src="images/linux-security/enabled-services.png" alt="Enabled system services inventory on the Ubuntu security assessment virtual machine" loading="lazy">
+          </div>
+          <div class="project-body">
+            <p class="project-kicker">Cybersecurity &middot; Linux hardening</p>
+            <h3 class="project-title">Linux System Security Assessment</h3>
+            <p class="project-desc">A practical hardening review of an Ubuntu virtual machine &mdash; tightening password and audit policy, disabling unnecessary services, correcting permissions and documenting package-update status.</p>
+            <ul class="project-tags">
+              <li>Ubuntu</li><li>Lynis</li><li>UFW</li><li>auditd</li><li>Hardening</li>
+            </ul>
+            <div class="project-links">
+              <a href="linux-security.html" class="primary">View case study <span class="arrow">&rarr;</span></a>
+              <a href="https://github.com/benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT" target="_blank" rel="noopener">Source code <span class="arrow">&nearr;</span></a>
+              <a href="reports/linux-system-security-assessment-report.docx">Download report <span class="arrow">&darr;</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section section-tint">
+    <div class="container about-grid">
+      <div class="reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">Security-minded. <em>Detail-driven.</em></h2>
+      </div>
+      <div class="reveal" style="--d:.08s">
+        <div class="about-copy">
+          <p>I&rsquo;m <strong>Benjamin Khoko</strong>, a final-year computer science student at DMI St John the Baptist University in Malawi. I design and build full-stack applications, with a particular interest in systems people have to trust with their data.</p>
+          <p>Across four end-to-end projects I&rsquo;ve modelled file permissions and encrypted storage, benchmarked classification models for fraud detection, shipped a document-analysis workspace with more than 100 automated tests, and hardened an Ubuntu virtual machine against weak configurations, unnecessary services, loose permissions and outdated packages. I care about clean interfaces, honest evaluation, and code that someone else can actually run.</p>
+        </div>
+        <dl class="fact-list">
+          <div><dt>Based in</dt><dd>Malawi &middot; open to remote</dd></div>
+          <div><dt>Education</dt><dd>BSc Computer Science, DMI St John the Baptist University (2023&ndash;2026)</dd></div>
+          <div><dt>Focus</dt><dd>Web development &middot; cybersecurity &middot; applied machine learning &middot; Linux hardening</dd></div>
+          <div><dt>Currently</dt><dd>Building and documenting secure, tested applications</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="toolkit" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow">Toolkit</p>
+          <h2 class="section-title">Tools I work <em>with.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s">A practical stack chosen across coursework, personal projects and production-style testing.</p>
+      </div>
+      <div class="toolkit-grid">
+        <div class="toolkit-card reveal">
+          <h3>Languages</h3>
+          <ul><li>Python</li><li>JavaScript</li><li>SQL</li><li>HTML &amp; CSS</li></ul>
+        </div>
+        <div class="toolkit-card reveal" style="--d:.06s">
+          <h3>Frameworks &amp; web</h3>
+          <ul><li>Flask</li><li>Flask-SQLAlchemy</li><li>Bootstrap 5</li><li>Tailwind CSS</li></ul>
+        </div>
+        <div class="toolkit-card reveal" style="--d:.12s">
+          <h3>Data &amp; ML</h3>
+          <ul><li>Scikit-learn</li><li>Pandas &amp; NumPy</li><li>NLTK &amp; spaCy</li><li>Transformers</li></ul>
+        </div>
+        <div class="toolkit-card reveal" style="--d:.18s">
+          <h3>Security &amp; quality</h3>
+          <ul><li>Cryptography</li><li>Flask-Login</li><li>pytest</li><li>Git &amp; SQLite</li><li>UFW &amp; auditd</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section section-tint">
+    <div class="container education-grid">
+      <div class="reveal">
+        <p class="eyebrow">Background</p>
+        <h2 class="section-title">Education &amp; <em>direction.</em></h2>
+      </div>
+      <div class="reveal" style="--d:.08s">
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-year">2023 &ndash; 2026</span>
+            <h3>BSc Computer Science</h3>
+            <p>DMI St John the Baptist University, Malawi. Coursework across programming, databases, machine learning and cybersecurity, applied through end-to-end project work.</p>
+          </div>
+        </div>
+        <div class="focus-card">
+          <h3>What I&rsquo;m looking for</h3>
+          <p>Internships and junior roles in software engineering, application security or machine learning engineering. I&rsquo;m comfortable working remotely and enjoy teams that value clear documentation and careful testing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="glow" style="left:-14rem;bottom:-22rem" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow eyebrow--light reveal">Contact</p>
+      <h2 class="cta-title reveal" style="--d:.06s">Let&rsquo;s build something <em>careful.</em></h2>
+      <p class="cta-lead reveal" style="--d:.12s">I&rsquo;m open to internships, junior engineering roles and collaborations across software, security and machine learning.</p>
+      <a href="mailto:benjaminkhoko@gmail.com" class="cta-email reveal" style="--d:.18s">benjaminkhoko@gmail.com <span class="arrow">&nearr;</span></a>
+      <div class="contact-grid reveal" style="--d:.24s">
+        <div class="contact-item">
+          <span class="label">GitHub</span>
+          <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener">github.com/benjakhoko</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/benjamin-khoko-856179406" target="_blank" rel="noopener">in/benjamin-khoko-856179406</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Location</span>
+          <p>Malawi &middot; remote-friendly</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
-<footer class="border-t border-navy/10 text-navy/60 text-sm">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between gap-2">
-    <p>&copy; <span id="year">2026</span> Benjamin Khoko. Academic project portfolio.</p>
-    <p>Secure File Sharing · Account Takeover Detection · NLP Smart Analyzer</p>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span>&copy; <span id="year">2026</span> Benjamin Khoko</span>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener">GitHub &nearr;</a>
+    </nav>
+    <a href="#" class="to-top">Back to top &uarr;</a>
   </div>
 </footer>
+
 <script src="js/script.js"></script>
 </body>
 </html>

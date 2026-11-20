@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | Benjamin Khoko</title>
-<meta name="description" content="The page you were looking for could not be found. Return to Benjamin Khoko's student portfolio.">
-<meta name="theme-color" content="#ffffff">
+<meta name="description" content="The page you were looking for could not be found. Return to Benjamin Khoko's portfolio.">
+<meta name="theme-color" content="#0c1210">
 <meta name="author" content="Benjamin Khoko">
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 <script>document.documentElement.classList.add("js")</script>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{colors:{navy:{DEFAULT:"#0B1F3A",soft:"#1B3358"},lime:{DEFAULT:"#1FE07A",dark:"#087F43",soft:"#E9FBF1"}}}}}</script>
-<style>
-  body { font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; padding-top: 4.5rem; }
-  h1, h2, h3, .font-display { font-family: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif; letter-spacing: -0.03em; }
-  a:focus-visible, button:focus-visible { outline: 3px solid #1FE07A; outline-offset: 3px; }
-  .btn { transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
-  .btn:hover { transform: translateY(-2px); }
-</style>
 </head>
-<body class="bg-white text-navy antialiased">
-<header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-navy/10">
-  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[4.5rem] flex items-center justify-between" aria-label="Main">
-    <a href="index.html" class="font-display text-lg font-bold tracking-tight text-navy flex items-center gap-2"><span class="h-2.5 w-2.5 bg-lime"></span>Benjamin Khoko</a>
-    <a href="index.html" class="btn bg-navy px-5 py-2.5 text-white font-semibold hover:bg-lime hover:text-navy">Back home &rarr;</a>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <nav class="site-nav container" aria-label="Main">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span>Benjamin Khoko<span class="brand-sub">Computer Science</span></span>
+    </a>
+    <a href="index.html" class="btn btn-outline btn-sm">Back home <span class="arrow">&rarr;</span></a>
   </nav>
 </header>
-<main>
-  <section class="relative overflow-hidden">
-    <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-lime/25 blur-3xl" aria-hidden="true"></div>
-    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-24 sm:py-36 text-center">
-      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-lime-dark">Error 404</p>
-      <h1 class="mt-5 text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.02]">This page moved or never existed.</h1>
-      <p class="mt-6 mx-auto max-w-xl text-lg text-navy/70">The link may be broken, or the page may have been removed. Use the links below to get back to the portfolio.</p>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="index.html" class="btn inline-flex items-center justify-center bg-lime px-7 py-3.5 font-semibold text-navy hover:shadow-lg hover:shadow-lime/40">Home &rarr;</a>
-        <a href="index.html#projects" class="btn inline-flex items-center justify-center border-2 border-navy px-7 py-3.5 font-semibold text-navy hover:bg-navy hover:text-white">Projects</a>
-        <a href="results.html" class="btn inline-flex items-center justify-center border-2 border-navy px-7 py-3.5 font-semibold text-navy hover:bg-navy hover:text-white">ML Results</a>
+
+<main id="main">
+  <section class="page-hero" style="min-height:calc(100vh - 138px);display:flex;align-items:center">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="glow" style="left:50%;top:30%;transform:translate(-50%,-50%)" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:1;text-align:center">
+      <p class="eyebrow eyebrow--light" style="justify-content:center">Error 404</p>
+      <h1 class="display" style="max-width:16ch;margin:1.4rem auto 0">This page moved or <em>never existed.</em></h1>
+      <p class="lead" style="margin:1.5rem auto 0;text-align:center">The link may be broken, or the page may have been removed. Use the links below to get back to the portfolio.</p>
+      <div class="page-hero-actions" style="justify-content:center;margin-top:2.2rem">
+        <a href="index.html" class="btn btn-mint">Home <span class="arrow">&rarr;</span></a>
+        <a href="index.html#work" class="btn btn-outline-light">Projects</a>
+        <a href="results.html" class="btn btn-outline-light">ML results</a>
       </div>
     </div>
   </section>
 </main>
-<footer class="border-t border-navy/10 text-navy/60 text-sm">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between gap-2">
-    <p>&copy; <span id="year">2026</span> Benjamin Khoko. Academic project portfolio.</p>
-    <p>Secure File Sharing · Account Takeover Detection · NLP Smart Analyzer</p>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span>&copy; <span id="year">2026</span> Benjamin Khoko</span>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="#" class="to-top">Back to top &uarr;</a>
   </div>
 </footer>
+
 <script src="js/script.js"></script>
 </body>
 </html>

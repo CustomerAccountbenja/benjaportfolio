@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux System Security Assessment | Benjamin Khoko</title>
+<meta name="description" content="A practical security assessment and hardening review of an Ubuntu virtual machine covering weak configurations, unnecessary services, insecure permissions and outdated packages.">
+<meta name="theme-color" content="#0c1210">
+<meta name="author" content="Benjamin Khoko">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="canonical" href="https://customeraccountbenja.github.io/benjaportfolio/linux-security.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Benjamin Khoko">
+<meta property="og:title" content="Linux System Security Assessment | Benjamin Khoko">
+<meta property="og:description" content="A practical hardening review of an Ubuntu virtual machine, from baseline inspection to verified remediation.">
+<meta property="og:url" content="https://customeraccountbenja.github.io/benjaportfolio/linux-security.html">
+<meta property="og:image" content="https://customeraccountbenja.github.io/benjaportfolio/images/linux-security/lynis-sudoers.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux System Security Assessment | Benjamin Khoko">
+<meta name="twitter:description" content="A practical hardening review of an Ubuntu virtual machine, from baseline inspection to verified remediation.">
+<meta name="twitter:image" content="https://customeraccountbenja.github.io/benjaportfolio/images/linux-security/lynis-sudoers.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <nav class="site-nav container" aria-label="Main">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span>Benjamin Khoko<span class="brand-sub">Computer Science</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#toolkit">Toolkit</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener" class="btn btn-outline btn-sm nav-github">GitHub <span class="arrow">&nearr;</span></a>
+      <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="container">
+      <a href="index.html#work">Work <span aria-hidden="true">&rarr;</span></a>
+      <a href="index.html#about">About <span aria-hidden="true">&rarr;</span></a>
+      <a href="index.html#toolkit">Toolkit <span aria-hidden="true">&rarr;</span></a>
+      <a href="index.html#contact">Contact <span aria-hidden="true">&rarr;</span></a>
+      <a href="https://github.com/benjakhoko/" target="_blank" rel="noopener" class="btn btn-primary">GitHub <span class="arrow">&nearr;</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="glow" style="right:-12rem;top:-14rem" aria-hidden="true"></div>
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow eyebrow--light reveal">Case study &middot; Linux security</p>
+        <h1 class="reveal" style="--d:.06s">Linux System Security Assessment</h1>
+        <p class="lead reveal" style="--d:.12s">A practical hardening review of an Ubuntu virtual machine, covering weak configurations, unnecessary services, insecure permissions and outdated packages.</p>
+        <div class="tag-row reveal" style="--d:.18s">
+          <span class="tag">Ubuntu</span><span class="tag">Lynis</span><span class="tag">UFW</span><span class="tag">auditd</span><span class="tag">Hardening</span>
+        </div>
+        <div class="page-hero-actions reveal" style="--d:.24s">
+          <a href="https://github.com/benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT" target="_blank" rel="noopener" class="btn btn-mint">View source code <span class="arrow">&nearr;</span></a>
+          <a href="#findings" class="btn btn-outline-light">Read the findings <span class="arrow">&darr;</span></a>
+          <a href="reports/linux-system-security-assessment-report.docx" class="btn btn-outline-light">Download report <span class="arrow">&darr;</span></a>
+        </div>
+      </div>
+      <aside class="glance reveal" style="--d:.2s">
+        <h2>At a glance</h2>
+        <div class="glance-stats">
+          <div class="glance-stat"><span class="value">67</span><span class="label">Hardening index</span></div>
+          <div class="glance-stat"><span class="value">250</span><span class="label">Tests performed</span></div>
+          <div class="glance-stat"><span class="value">35</span><span class="label">Suggestions</span></div>
+          <div class="glance-stat"><span class="value">0</span><span class="label">Warnings</span></div>
+        </div>
+        <dl class="glance-list">
+          <div><dt>Platform</dt><dd>Ubuntu 26.04.1 LTS</dd></div>
+          <div><dt>Tool</dt><dd>Lynis 3.1.6</dd></div>
+          <div><dt>Type</dt><dd>Academic assessment</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div class="reveal">
+        <p class="eyebrow">Overview</p>
+        <h2 class="section-title" style="font-size:clamp(2.1rem,3.6vw,3.1rem);margin-bottom:1.4rem">Four questions, one hardened VM.</h2>
+        <div class="prose">
+          <p>Linux systems can be exposed to security risks through weak default settings, services that are not needed, overly permissive file or directory access, and software that has not received available updates. This assessment examined an Ubuntu virtual machine running in Oracle VirtualBox and applied selected remediation steps while retaining the evidence needed for reporting.</p>
+          <p>The work was conducted locally inside the VM. Commands and terminal screenshots were retained in the project workspace under <span class="mono">~/linux-security-assessment</span>, including a logs directory that forms the evidence base for the final report.</p>
+        </div>
+      </div>
+      <dl class="facts reveal" style="--d:.08s">
+        <div><dt>Category</dt><dd>Cybersecurity &middot; Linux hardening</dd></div>
+        <div><dt>Type</dt><dd>Academic security assessment</dd></div>
+        <div><dt>Environment</dt><dd>Ubuntu 26.04.1 LTS &middot; Oracle VirtualBox</dd></div>
+        <div><dt>Kernel</dt><dd>7.0.0-43-generic &middot; x86_64</dd></div>
+        <div><dt>Tool</dt><dd>Lynis 3.1.6</dd></div>
+        <div><dt>Output</dt><dd>Final report &middot; evidence logs &middot; screenshots</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="method" class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow">Method</p>
+          <h2 class="section-title">From baseline to <em>verified fixes.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s">A local, evidence-first process: inspect the system, decide what matters, remediate carefully and confirm the result.</p>
+      </div>
+
+      <div class="numbered">
+        <div class="numbered-item reveal">
+          <span class="index">01</span>
+          <div class="body">
+            <h2>A local, evidence-first assessment.</h2>
+            <p>The work ran inside the Ubuntu VM and combined baseline inspection, configuration review, service and listener discovery, permission checks, package inventory, selected remediation and verification. Representative commands were recorded alongside the terminal output.</p>
+            <div class="code-block" style="margin-top:1.5rem">
+              <p class="c"># representative commands</p>
+              <p>sudo lynis audit system</p>
+              <p>systemctl list-unit-files --type=service --state=enabled</p>
+              <p>sudo ss -tulpn</p>
+              <p>sudo ufw status verbose</p>
+              <p>sudo auditctl -l</p>
+              <p>apt list --upgradable</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="numbered-item reveal">
+          <span class="index">02</span>
+          <div class="body">
+            <h2>Four required areas shaped the review.</h2>
+            <ul class="list-check">
+              <li><span class="num">1</span><span>Weak configurations, including password aging, audit logging and firewall policy.</span></li>
+              <li><span class="num">2</span><span>Unnecessary services that add installed functionality and potential attack surface.</span></li>
+              <li><span class="num">3</span><span>Insecure permissions on account files, SSH files and privileged directories.</span></li>
+              <li><span class="num">4</span><span>Outdated packages and the status of available updates.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="numbered-item reveal">
+          <span class="index">03</span>
+          <div class="body">
+            <h2>Remediate, then verify.</h2>
+            <p>Each change was paired with a command that confirms the new state, and the output was saved in the logs directory. Where the evidence did not support a firm conclusion &mdash; particularly the remaining package updates &mdash; the report records the item as pending rather than claiming success.</p>
+            <div class="callout"><strong>Guiding rule:</strong> a service being enabled does not prove it is running or vulnerable, and a Lynis suggestion is not the same as a confirmed vulnerability. Findings were reviewed in context before anything was changed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="findings" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow">Findings &amp; remediation</p>
+          <h2 class="section-title">What changed, and <em>what it fixed.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s">Four areas reviewed, with the observed issue, the action taken and the verification recorded in the report.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card reveal">
+          <h3>Weak configurations</h3>
+          <p>Password aging started at <span class="mono">PASS_MAX_DAYS 99999</span> and <span class="mono">PASS_MIN_DAYS 0</span>. The local account was changed to a 90-day maximum, 1-day minimum and 7-day warning, verified with <span class="mono">chage -l</span>. UFW was enabled with a default deny-incoming policy, and auditd was installed with watches on <span class="mono">/etc/passwd</span>, <span class="mono">/etc/shadow</span> and <span class="mono">/etc/sudoers</span>.</p>
+          <span class="tagline">Remediated &middot; verified</span>
+        </article>
+        <article class="card reveal" style="--d:.06s">
+          <h3>Unnecessary services</h3>
+          <p>Bluetooth, CUPS printing, CUPS-browsed printer discovery and ModemManager were not required for the VM's assessment tasks. They were disabled and stopped with <span class="mono">systemctl disable --now</span>, and the CUPS socket and path activation units were disabled as well. Avahi was retained for local service discovery.</p>
+          <span class="tagline">Disabled &middot; verified</span>
+        </article>
+        <article class="card reveal" style="--d:.12s">
+          <h3>Insecure permissions</h3>
+          <p>Core account files were already correctly restricted, and the user's <span class="mono">~/.ssh</span> directory was mode 700 with <span class="mono">authorized_keys</span> at 600. The <span class="mono">/etc/sudoers.d</span> directory was tightened from 755 to 750. World-writable directories were reviewed rather than changed indiscriminately, since <span class="mono">/tmp</span> and <span class="mono">/var/tmp</span> rely on the sticky bit.</p>
+          <span class="tagline">Hardened &middot; verified</span>
+        </article>
+        <article class="card reveal" style="--d:.18s">
+          <h3>Outdated packages</h3>
+          <p>The inventory began at 146 upgradeable packages. A later APT plan selected 95 for upgrade and held back 10 because of phased updates; the final captured list still showed 10 packages. Those are recorded as pending verification rather than confirmed installed updates.</p>
+          <span class="tagline">Pending &middot; verification</span>
+        </article>
+      </div>
+
+      <div class="callout reveal" style="margin-top:2rem;max-width:82ch">
+        <strong>Network note:</strong> a GVFS Web Services Dynamic Discovery process (<span class="mono">/usr/bin/wsdd</span>) was found listening on UDP ports 3702 and 50203. Process inspection traced it to <span class="mono">gvfs-backends</span> and the user's desktop session, so it was identified as a legitimate discovery component and retained rather than treated as malware.
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--light">Lynis audit</p>
+          <h2 class="section-title">A hardening index, <em>not a guarantee.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s;color:rgba(255,255,255,.62)">Lynis 3.1.6 audited the system and completed 250 tests, producing a hardening index of 67 with no warnings.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric metric--dark reveal">
+          <span class="value">67</span>
+          <span class="label">Hardening index</span>
+          <p class="note">A relative score, not a percentage security guarantee.</p>
+        </div>
+        <div class="metric metric--dark reveal" style="--d:.06s">
+          <span class="value">250</span>
+          <span class="label">Tests performed</span>
+          <p class="note">Ubuntu 26.04 &middot; kernel 7.0.0 detected.</p>
+        </div>
+        <div class="metric metric--dark reveal" style="--d:.12s">
+          <span class="value">0</span>
+          <span class="label">Warnings</span>
+          <p class="note">Lynis displayed &ldquo;Great, no warnings&rdquo;.</p>
+        </div>
+        <div class="metric metric--dark reveal" style="--d:.18s">
+          <span class="value">35</span>
+          <span class="label">Suggestions</span>
+          <p class="note">Further hardening ideas, not confirmed vulnerabilities.</p>
+        </div>
+      </div>
+      <div class="content-grid" style="margin-top:2.6rem;padding-top:2.4rem;border-top:1px solid var(--line-dark)">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--light">Reading the results</p>
+          <h3 style="margin-top:.8rem;font-size:1.8rem">Careful claims.</h3>
+        </div>
+        <div class="prose reveal" style="--d:.08s">
+          <p style="color:rgba(255,255,255,.68)">Suggestions included file-integrity monitoring, sysctl review, compiler-access hardening, a malware scanner and permission review. They are recommendations for additional hardening and do not automatically mean a vulnerability was confirmed.</p>
+          <p style="color:rgba(255,255,255,.68)">The scan also noted that the installed Lynis release was more than six months old and that its end-of-life database had no entry for this Ubuntu release. Those notices are not proof that Ubuntu itself is end-of-life.</p>
+          <div class="tag-row" style="margin-top:1.4rem">
+            <span class="tag">Lynis 3.1.6</span><span class="tag">250 tests</span><span class="tag">No warnings</span><span class="tag">35 suggestions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="evidence" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow">Evidence</p>
+          <h2 class="section-title">The terminal, <em>as recorded.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s">Eleven screenshots captured during the assessment, in the order they support the checks and remediation. Select an image to open it at full size.</p>
+      </div>
+      <div class="gallery">
+        <figure class="reveal"><a href="images/linux-security/enabled-services.png" target="_blank" rel="noopener"><img src="images/linux-security/enabled-services.png" alt="Inventory of enabled system services on the Ubuntu assessment virtual machine" loading="lazy"></a><figcaption>Enabled services inventory</figcaption></figure>
+        <figure class="reveal" style="--d:.04s"><a href="images/linux-security/service-status.png" target="_blank" rel="noopener"><img src="images/linux-security/service-status.png" alt="Service status checks and remediation for CUPS, CUPS-browsed and ModemManager" loading="lazy"></a><figcaption>Service status and remediation</figcaption></figure>
+        <figure class="reveal" style="--d:.08s"><a href="images/linux-security/service-remediation.png" target="_blank" rel="noopener"><img src="images/linux-security/service-remediation.png" alt="Disabled service verification and inspection of account file permissions" loading="lazy"></a><figcaption>Service and permission checks</figcaption></figure>
+        <figure class="reveal"><a href="images/linux-security/password-aging.png" target="_blank" rel="noopener"><img src="images/linux-security/password-aging.png" alt="Password-aging policy before and after changing the local account to a 90-day maximum, 1-day minimum and 7-day warning" loading="lazy"></a><figcaption>Password-aging policy</figcaption></figure>
+        <figure class="reveal" style="--d:.04s"><a href="images/linux-security/auditd-install.png" target="_blank" rel="noopener"><img src="images/linux-security/auditd-install.png" alt="auditd installation and service status showing the security audit logging service active and enabled" loading="lazy"></a><figcaption>auditd installation</figcaption></figure>
+        <figure class="reveal" style="--d:.08s"><a href="images/linux-security/audit-rules.png" target="_blank" rel="noopener"><img src="images/linux-security/audit-rules.png" alt="Audit subsystem status and audit rule investigation output" loading="lazy"></a><figcaption>Audit status and rules</figcaption></figure>
+        <figure class="reveal"><a href="images/linux-security/permissions-world-writable.png" target="_blank" rel="noopener"><img src="images/linux-security/permissions-world-writable.png" alt="Account file permissions, world-writable directory search and SSH file permissions" loading="lazy"></a><figcaption>Permissions and world-writable search</figcaption></figure>
+        <figure class="reveal" style="--d:.04s"><a href="images/linux-security/lynis-sudoers.png" target="_blank" rel="noopener"><img src="images/linux-security/lynis-sudoers.png" alt="Lynis 3.1.6 audit completion notice and /etc/sudoers.d permissions before correction" loading="lazy"></a><figcaption>Lynis completion and sudoers.d</figcaption></figure>
+        <figure class="reveal" style="--d:.08s"><a href="images/linux-security/listening-ports.png" target="_blank" rel="noopener"><img src="images/linux-security/listening-ports.png" alt="Listening network sockets identified with ss during the port assessment" loading="lazy"></a><figcaption>Listening network sockets</figcaption></figure>
+        <figure class="reveal"><a href="images/linux-security/wsdd-process.png" target="_blank" rel="noopener"><img src="images/linux-security/wsdd-process.png" alt="Process and socket investigation identifying GVFS WSDD as the owner of UDP ports 3702 and 50203" loading="lazy"></a><figcaption>GVFS WSDD process</figcaption></figure>
+        <figure class="reveal" style="--d:.04s"><a href="images/linux-security/firewall-packages.png" target="_blank" rel="noopener"><img src="images/linux-security/firewall-packages.png" alt="Final UFW firewall policy and remaining package-update inventory" loading="lazy"></a><figcaption>Firewall policy and package inventory</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container content-grid">
+      <div class="reveal">
+        <p class="eyebrow">Technology</p>
+        <h2 class="section-title" style="font-size:clamp(2.1rem,3.6vw,3.1rem)">Tools in the assessment.</h2>
+        <p class="section-intro" style="margin-top:1.2rem">Standard Ubuntu administration and security tooling, used locally inside a VirtualBox guest.</p>
+        <div class="chips">
+          <span class="chip">Ubuntu 26.04.1 LTS</span><span class="chip">Oracle VirtualBox</span><span class="chip">Lynis 3.1.6</span><span class="chip">UFW</span><span class="chip">auditd &middot; auditctl</span><span class="chip">systemctl</span><span class="chip">APT</span><span class="chip">chage</span><span class="chip">find</span><span class="chip">ss &middot; lsof</span>
+        </div>
+      </div>
+      <div class="reveal" style="--d:.08s">
+        <p class="eyebrow">Interpretation</p>
+        <h2 class="section-title" style="font-size:clamp(2.1rem,3.6vw,3.1rem)">Honest reporting.</h2>
+        <div class="prose" style="margin-top:1.2rem">
+          <p>The report separates verified changes from open items. Ten packages remained upgradeable in the latest captured package check, with phased updates noted by APT, so they are recorded as pending rather than fixed.</p>
+          <p>World-writable directories such as <span class="mono">/tmp</span> and <span class="mono">/var/tmp</span> can be legitimate when protected by the sticky bit, and the GVFS WSDD listener was identified rather than removed. The conclusion recommends repeat audits, log review and a post-update Lynis scan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow">Resources</p>
+          <h2 class="section-title">Read the <em>full report.</em></h2>
+        </div>
+        <p class="section-intro reveal" style="--d:.08s">The final assessment report includes the environment, methodology, findings, remediation tables, Lynis results, recommendations and evidence appendix.</p>
+      </div>
+      <div class="resource-grid">
+        <a href="https://github.com/benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT" target="_blank" rel="noopener" class="resource-card reveal">
+          <div class="top"><span>01</span><span>&nearr;</span></div>
+          <h3>GitHub repository</h3>
+          <p>Assessment notes, commands, evidence logs and report files.</p>
+          <span class="meta">github.com/benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT</span>
+        </a>
+        <a href="reports/linux-system-security-assessment-report.docx" class="resource-card reveal" style="--d:.06s">
+          <div class="top"><span>02</span><span>&darr;</span></div>
+          <h3>Full assessment report</h3>
+          <p>Findings, remediation, Lynis results, recommendations and evidence appendix.</p>
+          <span class="meta">DOCX &middot; final report</span>
+        </a>
+        <a href="#method" class="resource-card reveal" style="--d:.12s">
+          <div class="top"><span>03</span><span>&darr;</span></div>
+          <h3>Method &amp; commands</h3>
+          <p>Scope, representative commands and interpretation notes.</p>
+          <span class="meta">On this page</span>
+        </a>
+        <a href="secure-file-sharing.html" class="resource-card reveal" style="--d:.18s">
+          <div class="top"><span>04</span><span>&rarr;</span></div>
+          <h3>Next project</h3>
+          <p>CipherVault &mdash; a secure file-sharing prototype.</p>
+          <span class="meta">Open case study</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="content-grid" style="align-items:center">
+        <div class="reveal">
+          <p class="eyebrow eyebrow--light">Continue</p>
+          <h2 class="section-title">See the rest of <em>the work.</em></h2>
+          <p class="section-intro" style="color:rgba(255,255,255,.62);margin-top:1.2rem">Four projects, one theme: software and systems that are secure, measured and documented.</p>
+          <div class="page-hero-actions">
+            <a href="index.html#work" class="btn btn-mint">All projects <span class="arrow">&rarr;</span></a>
+            <a href="index.html#contact" class="btn btn-outline-light">Get in touch <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="glance reveal" style="--d:.08s;max-width:420px;justify-self:end">
+          <h2>Project links</h2>
+          <div class="glance-list" style="margin-top:.6rem;border-top:0;padding-top:0">
+            <div><dt>Secure file sharing</dt><dd><a href="secure-file-sharing.html" style="color:var(--mint)">Open &rarr;</a></dd></div>
+            <div><dt>Account takeover</dt><dd><a href="project.html" style="color:var(--mint)">Open &rarr;</a></dd></div>
+            <div><dt>NLP Smart Analyzer</dt><dd><a href="nlp-project.html" style="color:var(--mint)">Open &rarr;</a></dd></div>
+            <div><dt>Model results</dt><dd><a href="results.html" style="color:var(--mint)">Open &rarr;</a></dd></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span>&copy; <span id="year">2026</span> Benjamin Khoko</span>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html#work">Work</a>
+      <a href="reports/linux-system-security-assessment-report.docx">Report</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://github.com/benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT" target="_blank" rel="noopener">Source &nearr;</a>
+    </nav>
+    <a href="#" class="to-top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

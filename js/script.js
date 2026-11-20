@@ -16,18 +16,35 @@ const RESULTS = {
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fmt = v => (typeof v === "number" ? v.toFixed(Number.isInteger(v) ? 0 : 1) + "%" : "\u2014");
 
+// Header: add a shadow once the page scrolls
+const header = document.getElementById("site-header");
+if (header) {
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
 // Mobile menu
 const btn = document.getElementById("menu-btn");
 const menu = document.getElementById("mobile-menu");
 if (btn && menu) {
-  btn.addEventListener("click", () => {
-    const open = menu.classList.toggle("hidden") === false;
+  const setMenu = open => {
+    menu.classList.toggle("is-open", open);
     btn.setAttribute("aria-expanded", String(open));
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("menu-open", open);
+  };
+  btn.addEventListener("click", () => setMenu(!menu.classList.contains("is-open")));
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && menu.classList.contains("is-open")) {
+      setMenu(false);
+      btn.focus();
+    }
   });
-  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-    menu.classList.add("hidden");
-    btn.setAttribute("aria-expanded", "false");
-  }));
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 880 && menu.classList.contains("is-open")) setMenu(false);
+  });
 }
 
 // Image fallbacks: show a placeholder if an image file is missing
@@ -36,9 +53,8 @@ document.querySelectorAll("[data-img-wrap]").forEach(wrap => {
   const fallback = wrap.querySelector("[data-img-fallback]");
   if (!img || !fallback) return;
   const showFallback = () => {
-    img.classList.add("hidden");
-    fallback.classList.remove("hidden");
-    fallback.classList.add("flex");
+    img.style.display = "none";
+    fallback.classList.add("is-visible");
   };
   img.addEventListener("error", showFallback);
   if (img.complete && img.naturalWidth === 0) showFallback();
@@ -67,17 +83,19 @@ if (bars) {
   bars.innerHTML = names.map(n => {
     const v = RESULTS.models[n].accuracy;
     const has = typeof v === "number";
-    return `<div><div class="flex justify-between text-sm sm:text-base font-semibold mb-2"><span>${n}</span><span>${fmt(v)}</span></div>
-      <div class="h-5 bg-white border border-navy/10 overflow-hidden"><div class="bar-fill h-full bg-lime" data-w="${has ? v : 0}"></div></div>
-      ${has ? "" : '<p class="mt-1 text-xs text-navy/50">Awaiting results</p>'}</div>`;
+    return `<div class="bar-row">
+      <div class="bar-top"><span>${n}</span><span>${fmt(v)}</span></div>
+      <div class="bar-track"><div class="bar-fill" data-w="${has ? v : 0}"></div></div>
+      ${has ? "" : '<p class="bar-note">Awaiting results</p>'}
+    </div>`;
   }).join("");
 }
 
 const body = document.getElementById("perf-body");
 if (body) {
   body.innerHTML = Object.entries(RESULTS.models).map(([n, m]) =>
-    `<tr class="border-t border-navy/10"><th scope="row" class="px-5 sm:px-7 py-4 text-left font-semibold whitespace-nowrap">${n}</th>` +
-    ["accuracy", "precision", "recall", "f1", "roc_auc"].map(k => `<td class="px-5 sm:px-7 py-4 text-center ${typeof m[k] === "number" ? "" : "text-navy/35"}">${fmt(m[k])}</td>`).join("") + "</tr>").join("");
+    `<tr><th scope="row">${n}</th>` +
+    ["accuracy", "precision", "recall", "f1", "roc_auc"].map(k => `<td>${fmt(m[k])}</td>`).join("") + "</tr>").join("");
 }
 
 // Scroll reveal + one-time bar/number animations
@@ -106,3 +124,20 @@ const io = "IntersectionObserver" in window ? new IntersectionObserver(entries =
   });
 }, { threshold: 0.15 }) : null;
 document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : (el.classList.add("in"), fillBars(el)));
+
+// Home page: highlight the nav item for the section in view
+const navLinks = Array.from(document.querySelectorAll(".nav-links a[href^='#']"));
+if (navLinks.length && "IntersectionObserver" in window) {
+  const linkFor = id => navLinks.find(a => a.getAttribute("href") === "#" + id);
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const link = linkFor(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.removeAttribute("aria-current"));
+        link.setAttribute("aria-current", "true");
+      }
+    });
+  }, { rootMargin: "-35% 0px -55% 0px" });
+  document.querySelectorAll("main section[id]").forEach(section => spy.observe(section));
+}

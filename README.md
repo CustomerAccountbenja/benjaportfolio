@@ -1,9 +1,9 @@
 # Benjamin Khoko: Student Portfolio
 
-Static portfolio featuring the **Secure File Sharing System**, **Customer Account Takeover Detection**, and **NLP Smart Analyzer** projects.
-Built with HTML5, Tailwind CSS (CDN) and vanilla JavaScript. No build step, no backend.
+Static portfolio featuring the **Secure File Sharing System**, **Customer Account Takeover Detection**, **NLP Smart Analyzer** and **Linux System Security Assessment** projects.
+Built with HTML5, a custom CSS design system and vanilla JavaScript. No build step, no backend.
 
-**Design:** white background, dark navy text, one bright-green accent. Large type, rounded cards, fixed top navigation, subtle scroll and hover animations (disabled automatically for visitors who prefer reduced motion).
+**Design:** an editorial dark/ivory theme with a serif display face (Instrument Serif), clean sans-serif body text (Inter), a mint accent, and a single shared stylesheet in `css/styles.css`. Large typography, project imagery, responsive layouts, scroll reveals and hover interactions (all disabled automatically for visitors who prefer reduced motion).
 
 ## Structure
 
@@ -14,15 +14,21 @@ student-portfolio/
 ├── results.html      Account-takeover ML results & resources
 ├── secure-file-sharing.html  Secure file-sharing case study & evidence
 ├── nlp-project.html            NLP Smart Analyzer case study
+├── linux-security.html         Linux hardening assessment case study & evidence
 ├── 404.html          Custom "page not found" page for GitHub Pages
 ├── robots.txt        Crawler rules + sitemap location
 ├── sitemap.xml       Indexable page list
+├── css/
+│   └── styles.css    Shared design system for every page
 ├── images/
 │   ├── favicon.svg         Site icon
 │   ├── profile.jpg         Portrait shown on the home page
 │   ├── cc/                 Account-takeover charts and model comparison data
 │   ├── npl/                NLP application screenshots
+│   ├── linux-security/     Linux assessment terminal screenshots
 │   └── secure file sharing/   Project screenshots and redacted public copies
+├── reports/
+│   └── linux-system-security-assessment-report.docx   Final Linux assessment report
 ├── js/script.js      Interactions + your RESULTS numbers
 └── README.md
 ```
@@ -66,6 +72,14 @@ available on request until a public link exists.
 The NLP Smart Analyzer case study links to its source repository:
 [benjakhoko/A-working-NLP-application](https://github.com/benjakhoko/A-working-NLP-application).
 The case study lists the features and technologies documented in that repository.
+
+The Linux System Security Assessment case study is based on the final report in
+`reports/linux-system-security-assessment-report.docx`, with terminal evidence
+in `images/linux-security/`. It records the Ubuntu 26.04.1 LTS / VirtualBox
+environment, Lynis 3.1.6 hardening index of 67 across 250 tests, the four
+remediation areas, and the ten package updates still pending verification.
+The source repository is
+[benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT](https://github.com/benjakhoko/LINUX-SYSTEM-SECURITY-ASSESSMENT).
 
 ## Deploy on GitHub Pages
 
